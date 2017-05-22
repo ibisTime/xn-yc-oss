@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     var columns = [{
         field: '',
         title: '',
@@ -12,37 +12,33 @@ $(function () {
         title: '价格',
         formatter: moneyFormat,
     }, {
-    	field: 'status',
+        field: 'status',
         title: '状态',
         type: "select",
         key: "jewel_template_status",
-        keyCode:'615907',
-        formatter: Dict.getNameForList("jewel_template_status",'615907'),
+        keyCode: '615907',
+        formatter: Dict.getNameForList("jewel_template_status", '615907'),
         search: true
     }, {
         field: 'backAmount1',
         title: '可摇人民币',
-        formatter:moneyFormat
+        formatter: moneyFormat
     }, {
         field: 'backAmount2',
         title: '可摇橙币',
-        formatter:moneyFormat
-    }, {
-        field: 'backAmount3',
-        title: '可摇积分',
-        formatter:moneyFormat
+        formatter: moneyFormat
     }];
 
     buildList({
         columns: columns,
         pageCode: '615105',
-		searchParams:{
-			companyCode: OSS.company
-		}
+        searchParams: {
+            companyCode: OSS.company
+        }
     });
-    
-    
-    
+
+
+
     $('#upBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -56,7 +52,7 @@ $(function () {
         confirm("确认上架？").then(function() {
             reqApi({
                 code: '615103',
-                json: { "code": selRecords[0].code}
+                json: { "code": selRecords[0].code }
             }).then(function() {
                 toastr.info("操作成功");
                 $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
@@ -64,7 +60,7 @@ $(function () {
         });
 
     });
-    
+
     $('#downBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -78,7 +74,7 @@ $(function () {
         confirm("确认下架？").then(function() {
             reqApi({
                 code: '615104',
-                json: { "code": selRecords[0].code}
+                json: { "code": selRecords[0].code }
             }).then(function() {
                 toastr.info("操作成功");
                 $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
@@ -86,7 +82,7 @@ $(function () {
         });
 
     });
-    
+
     $('#edit2Btn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -97,9 +93,9 @@ $(function () {
             toastr.info("已上架，不可以修改信息");
             return;
         }
-        
+
         window.location.href = "cashCowTp_addedit.html?Code=" + selRecords[0].code;
     });
 
-    
+
 });

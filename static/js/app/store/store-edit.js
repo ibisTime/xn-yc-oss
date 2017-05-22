@@ -1,31 +1,31 @@
 $(function() {
-	
-	var code = getQueryString('code');
-	var view = !!getQueryString('v');
-	var userId = getUserId();
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
+
+    var code = getQueryString('code');
+    var view = !!getQueryString('v');
+    var userId = getUserId();
+
+    var fields = [{
+        field: 'kind',
+        type: 'hidden',
+        value: '1'
+    }, {
         field: 'name',
         title: '商家名称',
         readonly: view,
         required: true,
         maxlength: 32
-    },{
+    }, {
         field: 'type',
         title: '分类',
-		type: 'select',
-		listCode: '808007',
+        type: 'select',
+        listCode: '808007',
         readonly: view,
-		params: {
-			type:2,
+        params: {
+            type: 2,
             parentCode: 0
-		},
-		keyName: 'code',
-		valueName: 'name',
+        },
+        keyName: 'code',
+        valueName: 'name',
     }, {
         field: 'legalPersonName',
         title: '法人姓名',
@@ -33,7 +33,7 @@ $(function() {
         required: true,
         maxlength: 32
     }, {
-    	field: 'mobile',
+        field: 'mobile',
         title: '登录名(店家手机号)',
         mobile: true,
         readonly: true,
@@ -53,9 +53,9 @@ $(function() {
     }, {
         title: '地址',
         field: "province1",
-        type:'select',
-        key:"product_location",
-        keyCode:'808907',
+        type: 'select',
+        key: "product_location",
+        keyCode: '808907',
         required: true,
         type: 'citySelect',
         readonly: view,
@@ -77,7 +77,7 @@ $(function() {
         north: true,
         readonly: view,
         hidden: !view
-    },{
+    }, {
         field: 'slogan',
         title: '广告语',
         required: true,
@@ -104,9 +104,9 @@ $(function() {
     }, {
         field: 'rate2',
         title: '使用积分比例',
-        min: 0,
-        required: true,
-        readonly: view
+        type: "hidden",
+        value: "0",
+        required: true
     }, {
         field: 'rate3',
         title: '返点人民币比例',
@@ -122,19 +122,19 @@ $(function() {
         title: '备注',
         readonly: view
     }];
-	
-	
-	var options = {
+
+
+    var options = {
         fields: fields,
-		view: view,
-		code: code,
-		detailCode: '808216',
-		editCode: '808208',
+        view: view,
+        code: code,
+        detailCode: '808216',
+        editCode: '808208',
     };
 
     buildDetail(options);
-    
-	$('#subBtn').off("click").click(function() {
+
+    $('#subBtn').off("click").click(function() {
         if ($('#jsForm').valid()) {
             var data = $('#jsForm').serializeObject();
             $('#jsForm').find('.btn-file [type=file]').parent().next().each(function(i, el) {
@@ -184,7 +184,7 @@ $(function() {
                     data.level = "1";
                     data.longitude = point.lng;
                     data.latitude = point.lat;
-                    
+
                     reqApi({
                         code: code ? options.editCode : options.addCode,
                         json: data
@@ -198,5 +198,5 @@ $(function() {
 
         }
     });
-	
+
 });

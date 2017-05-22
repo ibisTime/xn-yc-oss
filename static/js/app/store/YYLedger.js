@@ -1,6 +1,6 @@
-$(function () {
-	var code = getQueryString('code');
-	
+$(function() {
+    var code = getQueryString('code');
+
     var columns = [{
         field: '',
         title: '',
@@ -8,42 +8,38 @@ $(function () {
     }, {
         field: 'price',
         title: '消费金额',
-		formatter: moneyFormat
+        formatter: moneyFormat
     }, {
         field: 'backAmount',
         title: '返现金额',
-		formatter: moneyFormat
+        formatter: moneyFormat
     }, {
         field: 'backCurrency',
         title: '返现币种',
-		key: 'currency',
-		keyCode: "802006",
-        formatter: Dict.getNameForList("currency",'802006'),
+        key: 'currency',
+        keyCode: "802006",
+        formatter: Dict.getNameForList("currency", '802006'),
     }, {
         field: 'payType',
         title: '买单方式',
-		key: 'store_pay_type',
-		keyCode: "808907",
-        formatter: Dict.getNameForList("store_pay_type",'808907'),
+        key: 'store_pay_type',
+        keyCode: "808907",
+        formatter: Dict.getNameForList("store_pay_type", '808907'),
     }, {
         field: 'payAmount1',
         title: '支付人民币',
-		formatter: moneyFormat
-    },  {
+        formatter: moneyFormat
+    }, {
         field: 'payAmount2',
         title: '支付橙币',
-		formatter: moneyFormat
-    },  {
-        field: 'payAmount3',
-        title: '支付积分',
-		formatter: moneyFormat
-    },  {
+        formatter: moneyFormat
+    }, {
         field: 'status',
         title: '状态',
         type: 'select',
         key: "store_purchase_status",
-        keyCode:'808907',
-        formatter: Dict.getNameForList("store_purchase_status","808907"),
+        keyCode: '808907',
+        formatter: Dict.getNameForList("store_purchase_status", "808907"),
         search: true,
     }, {
         field: 'createDatetime',
@@ -57,19 +53,19 @@ $(function () {
     buildList({
         columns: columns,
         pageCode: '808245',
-        searchParams:{
-        	storeCode: code,
-        	status: '1',
-			companyCode: OSS.company
-		}
+        searchParams: {
+            storeCode: code,
+            status: '1',
+            companyCode: OSS.company
+        }
     });
-    
-	$('.tools .toolbar').empty();
-	
-	$('.tools .toolbar').html('<li style="display:block;" id="backBtn"><span><img src="/static/images/t01.png"></span>返回</li>');
-	$('#backBtn').on('click', function() {
-		goBack();
-	});  
-    
-    
+
+    $('.tools .toolbar').empty();
+
+    $('.tools .toolbar').html('<li style="display:block;" id="backBtn"><span><img src="/static/images/t01.png"></span>返回</li>');
+    $('#backBtn').on('click', function() {
+        goBack();
+    });
+
+
 });

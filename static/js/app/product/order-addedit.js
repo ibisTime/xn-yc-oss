@@ -1,32 +1,32 @@
 $(function() {
-	
-	var code = getQueryString('code');
-	var view = getQueryString('v');
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
+
+    var code = getQueryString('code');
+    var view = getQueryString('v');
+
+    var fields = [{
+        field: 'kind',
+        type: 'hidden',
+        value: '1'
+    }, {
         field: 'orderCode',
         title: '订单编号',
         readonly: view,
-        formatter: function(v, data){
-        	return data.productOrderList[0].orderCode
+        formatter: function(v, data) {
+            return data.productOrderList[0].orderCode
         }
     }, {
         field: 'status',
         title: '订单状态',
         key: "order_status",
-        formatter: Dict.getNameForList("order_status","808907"),
+        formatter: Dict.getNameForList("order_status", "808907"),
         readonly: view,
     }, {
         field: 'applyUser',
         title: '下单用户',
         readonly: view,
-        formatter: function(v, data){
-	        	return data.user.mobile
-	        }
+        formatter: function(v, data) {
+            return data.user.mobile
+        }
     }, {
         field: 'applyNote',
         title: '下单说明',
@@ -42,18 +42,8 @@ $(function() {
         formatter: moneyFormat,
         readonly: view,
     }, {
-        title: '积分总额',
-        field: 'amount3',
-        formatter: moneyFormat,
-        readonly: view,
-    }, {
         title: '已支付橙币总额',
         field: 'payAmount2',
-        formatter: moneyFormat,
-        readonly: view,
-    }, {
-        title: '已支付积分总额',
-        field: 'payAmount3',
         formatter: moneyFormat,
         readonly: view,
     }, {
@@ -90,12 +80,6 @@ $(function() {
             formatter: function(v, data) {
                 return moneyFormat(data.price2);
             }
-        }, {
-            field: 'price3',
-            title: '积分价格',
-            formatter: function(v, data) {
-                return moneyFormat(data.price3);
-            }
         }]
     }, {
         field: 'logisticsCode',
@@ -124,12 +108,12 @@ $(function() {
         title: '备注',
         readonly: view,
     }];
-	
-	buildDetail({
-		fields: fields,
-		code: code,
-		view: view,
-		detailCode: '808066'
-	});
-	
+
+    buildDetail({
+        fields: fields,
+        code: code,
+        view: view,
+        detailCode: '808066'
+    });
+
 });

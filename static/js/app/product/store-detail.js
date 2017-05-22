@@ -1,14 +1,14 @@
 $(function() {
-	
-	var code = getQueryString('code');
-	var view = 1;
-	var userId = getUserId();
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
+
+    var code = getQueryString('code');
+    var view = 1;
+    var userId = getUserId();
+
+    var fields = [{
+        field: 'kind',
+        type: 'hidden',
+        value: '1'
+    }, {
         field: 'name',
         title: '店铺名称',
         readonly: view,
@@ -17,11 +17,11 @@ $(function() {
     }, {
         field: 'type',
         title: '分类',
-		type: 'select',
-		required: true,
-		listCode: '808007',
-		keyName: 'code',
-		valueName: 'name',
+        type: 'select',
+        required: true,
+        listCode: '808007',
+        keyName: 'code',
+        valueName: 'name',
     }, {
         field: 'legalPersonName',
         title: '法人姓名',
@@ -49,9 +49,9 @@ $(function() {
     }, {
         title: '地址',
         field: "province1",
-        type:'select',
-        key:"product_location",
-        keyCode:'808907',
+        type: 'select',
+        key: "product_location",
+        keyCode: '808907',
         required: true,
         type: 'citySelect',
         readonly: view,
@@ -98,12 +98,12 @@ $(function() {
         required: true,
         minlength: 20,
         readonly: view
-    },{
+    }, {
         field: 'uiLocation',
         title: '位置',
-        type:'select',
-        key:"product_location",
-        keyCode:'808907',
+        type: 'select',
+        key: "product_location",
+        keyCode: '808907',
         required: true,
     }, {
         field: 'uiOrder',
@@ -112,49 +112,42 @@ $(function() {
     }, {
         field: 'isDefault',
         title: '是否默认',
-        type:'select',
-        data:{
-        	1: "是",
-        	0: "否",
+        type: 'select',
+        data: {
+            1: "是",
+            0: "否",
         },
         required: true,
     }, {
-        field: 'rate2',
-        title: '使用积分比例',
-//      formatter: function(v, data) {
-//          return (v * 100) + "%"
-//      },
-
-    }, {
         field: 'rate3',
         title: '返点人民币比例',
-//      formatter: function(v, data) {
-//          return (v * 100) + "%"
-//      },
+        //      formatter: function(v, data) {
+        //          return (v * 100) + "%"
+        //      },
     }, {
         field: 'rate1',
         title: '返点橙币比例',
-//      formatter: function(v, data) {
-//          return (v * 100) + "%"
-//      },
-    },  {
+        //      formatter: function(v, data) {
+        //          return (v * 100) + "%"
+        //      },
+    }, {
         field: 'remark',
         title: '备注',
         readonly: view
     }];
-	
-	
-	var options = {
+
+
+    var options = {
         fields: fields,
-		view: view,
-		code: code,
-		detailCode: '808216',
-		addCode: '808200',
+        view: view,
+        code: code,
+        detailCode: '808216',
+        addCode: '808200',
     };
 
     buildDetail(options);
-    
-	$('#subBtn').off("click").click(function() {
+
+    $('#subBtn').off("click").click(function() {
         if ($('#jsForm').valid()) {
             var data = $('#jsForm').serializeObject();
             $('#jsForm').find('.btn-file [type=file]').parent().next().each(function(i, el) {
@@ -217,5 +210,5 @@ $(function() {
 
         }
     });
-	
+
 });

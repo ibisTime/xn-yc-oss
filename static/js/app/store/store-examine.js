@@ -1,13 +1,13 @@
 $(function() {
-	
-	var code = getQueryString('code');
-	var view = 1;
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
+
+    var code = getQueryString('code');
+    var view = 1;
+
+    var fields = [{
+        field: 'kind',
+        type: 'hidden',
+        value: '1'
+    }, {
         field: 'name',
         title: '店铺名称',
         readonly: view,
@@ -15,11 +15,11 @@ $(function() {
     }, {
         field: 'type',
         title: '分类',
-		type: 'select',
-		required: true,
-		listCode: '808007',
-		keyName: 'code',
-		valueName: 'name',
+        type: 'select',
+        required: true,
+        listCode: '808007',
+        keyName: 'code',
+        valueName: 'name',
     }, {
         field: 'legalPersonName',
         title: '法人姓名',
@@ -27,7 +27,7 @@ $(function() {
         required: true,
         maxlength: 32
     }, {
-    	field: 'mobile',
+        field: 'mobile',
         title: '登录名(店家手机号)',
         mobile: true,
         readonly: view,
@@ -47,9 +47,9 @@ $(function() {
     }, {
         title: '位置',
         field: "province1",
-        type:'select',
-        key:"product_location",
-        keyCode:'808907',
+        type: 'select',
+        key: "product_location",
+        keyCode: '808907',
         required: true,
         type: 'citySelect',
         readonly: view,
@@ -95,73 +95,68 @@ $(function() {
         type: 'textarea',
         required: true,
         readonly: view
-    },{
-        field: 'rate2',
-        title: '使用积分比例',
-        required: true,
-        readonly: view
-    },{
+    }, {
         field: 'rate3',
         title: '返点人民币比例',
         min: 0,
         required: true,
-    },{
+    }, {
         field: 'rate1',
         title: '返点橙币比例',
         min: 0,
         required: true,
-    },{
+    }, {
         field: 'remark',
         title: '备注',
         readonly: view
     }];
-	
-	
-	var options = {
+
+
+    var options = {
         fields: fields,
-		view: view,
-		code: code,
-		detailCode: '808216',
-		buttons:[{
-			title:"通过",
-		},{
-			title:"不通过",
-		},{
-			title:"返回",
-		}]
+        view: view,
+        code: code,
+        detailCode: '808216',
+        buttons: [{
+            title: "通过",
+        }, {
+            title: "不通过",
+        }, {
+            title: "返回",
+        }]
     };
 
     buildDetail(options);
-    
+
     //通过
-    $("#btn-0").click(function(){
-    	setExamine("1");
+    $("#btn-0").click(function() {
+        setExamine("1");
     })
-    
+
     //不通过
-    $("#btn-1").click(function(){
-    	setExamine("0");
+    $("#btn-1").click(function() {
+        setExamine("0");
     })
-    
+
     //返回
-    $("#btn-2").click(function(){
-    	goBack();
+    $("#btn-2").click(function() {
+        goBack();
     })
-    
-    function setExamine(a){
-    	var data = $('#jsForm').serializeObject();
-    	var sCodeList = [];
-    		sCodeList.push(data.code);
-			data.storeCodeList = sCodeList;
-    		data.approveResult = a;
-    		data.approver = getUserId();
-    		
-    	reqApi({
+
+    function setExamine(a) {
+        var data = $('#jsForm').serializeObject();
+        var sCodeList = [];
+        sCodeList.push(data.code);
+        data.storeCodeList = sCodeList;
+        data.approveResult = a;
+        data.approver = getUserId();
+
+        reqApi({
             code: '808202',
             json: data
         }).then(function() {
             sucDetail();
         });
     }
-	
+
 });

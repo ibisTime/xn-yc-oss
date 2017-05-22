@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     var columns = [{
         field: '',
         title: '',
@@ -11,22 +11,22 @@ $(function () {
         field: 'category',
         title: '大类',
         search: true,
-		type: 'select',
-		listCode: '808007',
-		params: {
-			type: '1',
-			parentCode: 0
-		},
-		keyName: 'code',
-		valueName: 'name',
-		
+        type: 'select',
+        listCode: '808007',
+        params: {
+            type: '1',
+            parentCode: 0
+        },
+        keyName: 'code',
+        valueName: 'name',
+
     }, {
         field: 'type',
         title: '小类',
-		type: 'select',
-		listCode: '808007',
-		keyName: 'code',
-		valueName: 'name',
+        type: 'select',
+        listCode: '808007',
+        keyName: 'code',
+        valueName: 'name',
     }, {
         field: 'originalPrice',
         title: '原价/市场价',
@@ -37,23 +37,19 @@ $(function () {
         type: "select",
         key: "product_status",
         keyCode: "808907",
-        formatter: Dict.getNameForList("product_status","808907"),
+        formatter: Dict.getNameForList("product_status", "808907"),
         search: true
     }, {
         field: 'price2',
         title: '橙币价',
         formatter: moneyFormat,
     }, {
-        field: 'price3',
-        title: '积分价',
-        formatter: moneyFormat,
-    }, {
         field: 'location',
         title: '位置',
-        type:'select',
-        key:"product_location",
-        keyCode:'808907',
-        formatter: Dict.getNameForList("product_location","808907"),
+        type: 'select',
+        key: "product_location",
+        keyCode: '808907',
+        formatter: Dict.getNameForList("product_location", "808907"),
         search: true,
     }, {
         field: 'remark',
@@ -63,12 +59,12 @@ $(function () {
     buildList({
         columns: columns,
         pageCode: '808025',
-        deleteCode:'808011',
-		searchParams:{
-			companyCode: OSS.company
-		}
+        deleteCode: '808011',
+        searchParams: {
+            companyCode: OSS.company
+        }
     });
-    
+
     $('#up2Btn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -79,11 +75,11 @@ $(function () {
             toastr.info("已上架");
             return;
         }
-        
+
         window.location.href = "product_up2.html?Code=" + selRecords[0].code;
 
     });
-    
+
     $('#downBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -105,7 +101,7 @@ $(function () {
         });
 
     });
-    
+
     $('#edit2Btn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -116,29 +112,29 @@ $(function () {
             toastr.info("已上架，不可以修改信息");
             return;
         }
-        
+
         window.location.href = "product_addedit.html?Code=" + selRecords[0].code;
     });
-    
+
     $('#detail2Btn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        
-        window.location.href = "product_detail2.html?Code=" + selRecords[0].code+"&v=1";
+
+        window.location.href = "product_detail2.html?Code=" + selRecords[0].code + "&v=1";
     });
-    
+
     $('#productParamBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        
-        window.location.href = "productParam.html?Code=" + selRecords[0].code+"&pName=" + selRecords[0].name;
+
+        window.location.href = "productParam.html?Code=" + selRecords[0].code + "&pName=" + selRecords[0].name;
     });
-    
-    
+
+
 });
