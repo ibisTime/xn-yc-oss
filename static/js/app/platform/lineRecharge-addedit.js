@@ -12,8 +12,9 @@ $(function() {
         required: true,
         type: 'select',
         pageCode: userId ? '802503' : '802500',
+        keyCode1: '802006',
         dict: [
-            ['type', 'account_kind']
+            ['type', 'account_type']
         ],
         params: {
             currency: 'CNY',

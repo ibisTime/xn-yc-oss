@@ -15,7 +15,7 @@ $(function() {
         type: 'select',
         key: 'channel_type',
         search: true,
-        // keyCode: '802006',
+        keyCode: '802006',
         formatter: Dict.getNameForList('channel_type'),
     }, {
         field: 'bizType',

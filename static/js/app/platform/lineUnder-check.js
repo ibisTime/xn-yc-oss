@@ -101,8 +101,8 @@ $(function() {
         title: '支付渠道',
         type: 'select',
         key: 'channel_type',
-        // keyCode: '802006',
-        formatter: Dict.getNameForList('channel_type'),
+        keyCode: '802006',
+        formatter: Dict.getNameForList('channel_type', '802006'),
         search: true
     }, {
         field: 'payCardInfo',
@@ -119,8 +119,8 @@ $(function() {
         title: '状态',
         type: 'select',
         key: 'withdraw_status',
-        // keyCode: '802006',
-        formatter: Dict.getNameForList('withdraw_status'),
+        keyCode: '802006',
+        formatter: Dict.getNameForList('withdraw_status', '802006'),
         search: true
     }, {
         field: 'applyUser',

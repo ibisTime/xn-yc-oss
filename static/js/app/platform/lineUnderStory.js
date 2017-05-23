@@ -22,7 +22,7 @@ $(function() {
         key: 'channel_type',
         // keyCode: '802006',
         formatter: Dict.getNameForList('channel_type'),
-        search: true
+        // search: true
     }, {
         field: 'payCardInfo',
         title: '开户行',
@@ -58,8 +58,8 @@ $(function() {
         title: '状态',
         type: 'select',
         key: 'withdraw_status',
-        // keyCode: '802006',
-        formatter: Dict.getNameForList('withdraw_status'),
+        keyCode: '802006',
+        formatter: Dict.getNameForList('withdraw_status', '802006'),
         search: true
     }, {
         field1: 'approveDateStart',

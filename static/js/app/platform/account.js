@@ -10,7 +10,7 @@ $(function() {
     }).done(function(data) {
         $("#amount-CNY").text("￥" + data[0].amount / 1000);
         accountNumberCNY = data[0].accountNumber;
-        $("#amount-CB").text("￥" + data[0].amount / 1000);
+        $("#amount-CB").text(data[1].amount / 1000);
         accountNumberCB = data[1].accountNumber;
     });
 
@@ -83,7 +83,7 @@ $(function() {
 
                         var data = $('#popForm').serializeObject();
                         data.fromUserId = getUserId();
-                        data.currency = "CGB";
+                        data.currency = "CB";
                         reqApi({
                             code: '802401',
                             json: data

@@ -100,7 +100,7 @@ $(function() {
             type: 'select',
             key: 'currency_type',
             // keyCode: "802006",
-            formatter: Dict.getNameForList("currency_type"),
+            formatter: Dict.getNameForList("currency_type", '802006'),
             search: true
         },
         {
@@ -108,8 +108,8 @@ $(function() {
             title: '支付渠道',
             type: 'select',
             key: 'channel_type',
-            // keyCode: '802006',
-            formatter: Dict.getNameForList('channel_type'),
+            keyCode: '802006',
+            formatter: Dict.getNameForList('channel_type', '802006'),
             search: true
         },
         {
@@ -127,8 +127,8 @@ $(function() {
             title: '状态',
             type: 'select',
             key: 'charge_status',
-            // keyCode: '802006',
-            formatter: Dict.getNameForList('charge_status'),
+            keyCode: '802006',
+            formatter: Dict.getNameForList('charge_status', '802006'),
             search: true
         }, {
             field: 'applyUser',

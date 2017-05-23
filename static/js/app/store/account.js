@@ -2,56 +2,73 @@ $(function() {
     var view = 1;
     var rateCGB = 1;
     var rateJF = 1;
-    var accountNumberRMB;
+    // var accountNumberRMB;
+    // var accountNumberCB;
+    // reqApi({
+    //     code: '802503',
+    //     json: {
+    //         userId: getUserId()
+    //     },
+    //     sync: true
+    // }).done(function(data) {
+    //     data.forEach(function(v, i) {
+    //         if (v.currency == "CGB") {
+    //             $("#amount-CGB").text(moneyFormat(v.amount) + "橙币")
+    //         } else if (v.currency == "CNY") {
+    //             $("#amount-CNY").text(moneyFormat(v.amount) + "元")
+
+    //         } else if (v.currency == "CGJF") {
+    //             $("#amount-JF").text(moneyFormat(v.amount) + "积分")
+    //         }
+    //     })
+
+    // });
+    var accountNumberCNY;
     var accountNumberCB;
     reqApi({
         code: '802503',
         json: {
             userId: getUserId()
-        },
-        sync: true
+        }
     }).done(function(data) {
-        data.forEach(function(v, i) {
-            if (v.currency == "CGB") {
-                $("#amount-CGB").text(moneyFormat(v.amount) + "橙币")
-            } else if (v.currency == "CNY") {
-                $("#amount-CNY").text(moneyFormat(v.amount) + "元")
-            } else if (v.currency == "CGJF") {
-                $("#amount-JF").text(moneyFormat(v.amount) + "积分")
-            }
-        })
-
+        $("#amount-CNY").text("￥" + data[0].amount / 1000);
+        accountNumberCNY = data[0].accountNumber;
+        $("#amount-CB").text(data[1].amount / 1000);
+        accountNumberCB = data[1].accountNumber;
     });
+    // reqApi({
+    //     code: '002051',
+    //     json: {
+    //         fromCurrency: 'CNY',
+    //         toCurrency: 'CB'
+    //     },
+    //     sync: true
+    // }).done(function(data) {
+    //     rateCGB = data.rate
+    // });
 
-    reqApi({
-        code: '002051',
-        json: {
-            fromCurrency: 'CNY',
-            toCurrency: 'CB'
-        },
-        sync: true
-    }).done(function(data) {
-        rateCGB = data.rate
-    });
-
-    reqApi({
-        code: '002051',
-        json: {
-            fromCurrency: 'CB',
-            toCurrency: 'CGJF'
-        },
-        sync: true
-    }).done(function(data) {
-        rateJF = data.rate
-    });
+    // reqApi({
+    //     code: '002051',
+    //     json: {
+    //         fromCurrency: 'CB',
+    //         toCurrency: 'CGJF'
+    //     },
+    //     sync: true
+    // }).done(function(data) {
+    //     rateJF = data.rate
+    // });
 
     $("#CNYls-Btn").click(function() {
-        location.href = "ledger.html?currency=CNY&accountNumber" + accountNumberRMB;
+        location.href = "ledger.html?accountNumber=" + accountNumberCNY;
     })
     $("#CGBls-Btn").click(function() {
-        location.href = "ledger.html?currency=CNY&accountNumber" + accountNumberCB;
+        location.href = "ledger.html?accountNumber=" + accountNumberCB;
     })
-
+    $("#accouBtn").click(
+        function() {
+            window.location.href = '../platform/account_quxian.html?accountNumber=' + accountNumberCNY;
+        }
+    );
 
     $('#saleBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');

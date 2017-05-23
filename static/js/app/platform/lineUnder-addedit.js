@@ -13,9 +13,9 @@ $(function() {
         required: true,
         type: 'select',
         pageCode: '802500',
-        // keyCode1: '802006',
+        keyCode1: '802006',
         dict: [
-            ['type', 'account_kind']
+            ['type', 'account_type']
         ],
         params: {
             currency: 'CNY',

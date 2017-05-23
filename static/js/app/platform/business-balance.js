@@ -1,5 +1,5 @@
 $(function() {
-
+    var userId = getQueryString('userId');
     var columns = [{
             field: '',
             title: '',
@@ -90,7 +90,8 @@ $(function() {
         // singleSelect: false,
         searchParams: {
             channelType: '90',
-            companyCode: OSS.company
+            companyCode: OSS.company,
+            userId: userId
         }
     });
 
@@ -100,9 +101,16 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        location.href = "recharge_check.html?code=" + selRecords[0].code + "&detail=1";
+        location.href = "lineRecharge_check.html?code=" + selRecords[0].code + "&detail=1";
     });
-
+    $("#detail2Btn").click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        location.href = "lineRecharge_check.html?code=" + selRecords[0].code + "&detail=1";
+    });
     //审核
     $('#cheBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -113,7 +121,7 @@ $(function() {
 
         if (selRecords.length == 1 && selRecords[0].status == 1) {
 
-            window.location.href = "recharge_check.html?Code=" + selRecords[0].code;
+            window.location.href = "lineRecharge_check.html?Code=" + selRecords[0].code;
         } else {
 
             var dataCode = []
@@ -194,5 +202,6 @@ $(function() {
         }
 
     });
-
+    $("#balanceBtn").remove();
+    $("#returnBtn").remove();
 });

@@ -80,7 +80,8 @@ $(function() {
             title: '状态',
             type: 'select',
             key: 'charge_status',
-            formatter: Dict.getNameForList('charge_status'),
+            keyCode: '802006',
+            formatter: Dict.getNameForList("charge_status", "802006"),
             search: true
         }
     ];
