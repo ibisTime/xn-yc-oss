@@ -13,6 +13,15 @@ $(function() {
         amount: true,
         formatter: moneyFormat,
     }, {
+        field: 'price1',
+        title: '人民币价',
+        amount: true,
+        formatter: moneyFormat,
+        required: true,
+        onKeyup: function(value) {
+            $("#price2").val(value)
+        }
+    }, {
         field: 'price2',
         title: '橙币价',
         amount: true,
@@ -51,7 +60,7 @@ $(function() {
             confirm("确认上架？").then(function() {
                 var data = $('#jsForm').serializeObject();
                 data.code = code;
-                data.price1 = "0";
+                // data.price1 = "0";
 
                 reqApi({
                     code: '808013',

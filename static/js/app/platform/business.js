@@ -34,6 +34,7 @@ $(function() {
         searchParams: {
             kind: 'f2'
         }
+
     });
 
     $('#detail2Btn').click(function() {

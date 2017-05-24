@@ -1,50 +1,57 @@
 $(function() {
     var columns = [{
-        field: '',
-        title: '',
-        checkbox: true
-    }, {
-        field: 'code',
-        title: '订单编号',
-    }, {
-        field: 'status',
-        title: '订单状态',
-        type: "select",
-        key: "order_status",
-        keyCode: '808907',
-        formatter: Dict.getNameForList("order_status", "808907"),
-        search: true,
-    }, {
-        field: 'amount2',
-        title: '橙币总额',
-        formatter: moneyFormat,
-    }, {
-        field: 'payAmount2',
-        title: '已支付橙币总额',
-        formatter: moneyFormat,
-    }, {
-        field: 'applyUser',
-        title: '下单用户',
-        formatter: function(v, data) {
-            return data.user.mobile;
-        }
+            field: '',
+            title: '',
+            checkbox: true
+        }, {
+            field: 'code',
+            title: '订单编号',
+        }, {
+            field: 'status',
+            title: '订单状态',
+            type: "select",
+            key: "order_status",
+            keyCode: '808907',
+            formatter: Dict.getNameForList("order_status", "808907"),
+            search: true,
+        }, {
+            field: 'amount1',
+            title: '人民币总额',
+            formatter: moneyFormat,
+        }, {
+            field: 'amount2',
+            title: '橙币总额',
+            formatter: moneyFormat,
+        },
+        //  {
+        //     field: 'payAmount2',
+        //     title: '已支付橙币总额',
+        //     formatter: moneyFormat,
+        // }, 
+        {
+            field: 'applyUser',
+            title: '下单用户',
+            formatter: function(v, data) {
+                return data.user.mobile;
+            }
 
-    }, {
-        field: 'applyDatetime',
-        title: '下单时间',
-        type: "datetime",
-        field1: 'dateStart',
-        title1: '下单时间起',
-        type1: "date",
-        field2: 'dateEnd',
-        title2: '下单时间止',
-        type2: "date",
-        search: true,
-        formatter: dateTimeFormat
-    }, {
-        field: 'remark',
-        title: '备注',
-    }];
+        }, {
+            field: 'applyDatetime',
+            title: '下单时间',
+            type: "datetime",
+            field1: 'dateStart',
+            title1: '下单时间起',
+            type1: "date",
+            field2: 'dateEnd',
+            title2: '下单时间止',
+            type2: "date",
+            search: true,
+            formatter: dateTimeFormat
+        }, {
+            field: 'remark',
+            title: '备注',
+        }
+    ];
 
     buildList({
         columns: columns,

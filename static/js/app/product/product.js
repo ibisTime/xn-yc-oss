@@ -40,6 +40,10 @@ $(function() {
         formatter: Dict.getNameForList("product_status", "808907"),
         search: true
     }, {
+        field: 'price1',
+        title: '人民币价',
+        formatter: moneyFormat,
+    }, {
         field: 'price2',
         title: '橙币价',
         formatter: moneyFormat,

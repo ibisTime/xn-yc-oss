@@ -36,16 +36,16 @@ $(function() {
         $("#amount-CB").text(data[1].amount / 1000);
         accountNumberCB = data[1].accountNumber;
     });
-    // reqApi({
-    //     code: '002051',
-    //     json: {
-    //         fromCurrency: 'CNY',
-    //         toCurrency: 'CB'
-    //     },
-    //     sync: true
-    // }).done(function(data) {
-    //     rateCGB = data.rate
-    // });
+    reqApi({
+        code: '002051',
+        json: {
+            fromCurrency: 'CNY',
+            toCurrency: 'CB'
+        },
+        sync: true
+    }).done(function(data) {
+        rateCGB = data.rate
+    });
 
     // reqApi({
     //     code: '002051',

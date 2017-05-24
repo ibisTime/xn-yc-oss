@@ -140,7 +140,7 @@ $(function() {
             type: 'hidden',
             required: true,
         }, {
-            field: 'ccitySelect',
+            field: 'city',
             title: '市',
             value: "宁波市",
             type: 'hidden',
@@ -151,7 +151,7 @@ $(function() {
             value: "余姚区",
             type: 'hidden',
             required: true,
-        },
+        }
     ];
 
 
@@ -161,11 +161,11 @@ $(function() {
         code: code,
         detailCode: '808216',
         addCode: '808200',
-        beforeSubmit: function(data) {
-            // data.province = '浙江省';
-            // data.city = '宁波市';
-            // data.area = '余姚区'
-        }
+        // beforeSubmit: function(data) {
+        // data.province = '浙江省';
+        // data.city = '宁波市';
+        // data.area = '余姚区'
+        // }
     };
 
     buildDetail(options);
