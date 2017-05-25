@@ -27,8 +27,9 @@ $(function() {
             field: 'channelType',
             title: '支付渠道',
             type: 'select',
+            keyCode: '802006',
             key: 'channel_type',
-            formatter: Dict.getNameForList('channel_type'),
+            formatter: Dict.getNameForList('channel_type', '802006'),
             // search: true
         }, {
             field: 'payCardInfo',

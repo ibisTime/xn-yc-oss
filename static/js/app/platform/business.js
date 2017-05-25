@@ -6,7 +6,7 @@ $(function() {
         checkbox: true
     }, {
         field: 'loginName',
-        title: '商家名称',
+        title: '商家',
     }, {
         field: 'mobile',
         title: '联系方式',
@@ -18,6 +18,9 @@ $(function() {
         field: 'status',
         title: '状态',
         key: 'user_status',
+        type: 'select',
+        search: true,
+        keyCode: '807706',
         formatter: Dict.getNameForList('user_status', "807706"),
     }, {
         field: 'createDatetime',
@@ -73,7 +76,7 @@ $(function() {
                 'userId': selRecords[0].userId
             }
         }).done(function(d) {
-            window.location.href = "yyLedger.html?code=" + d[0].store.code + "&payType=31";
+            window.location.href = "yyLedger.html?code=" + d[0].store.code + "&payType=50";
         });
 
     });

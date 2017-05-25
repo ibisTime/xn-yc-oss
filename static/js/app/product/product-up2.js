@@ -1,6 +1,17 @@
 $(function() {
-
     var code = getQueryString('code');
+    var rateCB = 1;
+    reqApi({
+        code: '002051',
+        json: {
+            fromCurrency: 'CNY',
+            toCurrency: 'CB'
+        },
+        sync: true
+    }).done(function(data) {
+        rateCB = data.rate
+    });
+
 
     var fields = [{
         field: 'kind',
@@ -19,7 +30,8 @@ $(function() {
         formatter: moneyFormat,
         required: true,
         onKeyup: function(value) {
-            $("#price2").val(value)
+            var val = parseFloat(value);
+            $("#price2").val(val * rateCB.toFixed(2));
         }
     }, {
         field: 'price2',

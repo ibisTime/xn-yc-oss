@@ -98,9 +98,9 @@ $(function() {
             field: 'currency',
             title: '币种',
             type: 'select',
-            key: 'currency_type',
+            key: 'currency',
             // keyCode: "802006",
-            formatter: Dict.getNameForList("currency_type", '802006'),
+            formatter: Dict.getNameForList("currency", '802006'),
             search: true
         },
         {

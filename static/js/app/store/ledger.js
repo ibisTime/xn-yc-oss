@@ -16,7 +16,7 @@ $(function() {
         key: 'channel_type',
         search: true,
         keyCode: '802006',
-        formatter: Dict.getNameForList('channel_type'),
+        formatter: Dict.getNameForList('channel_type', '802006'),
     }, {
         field: 'bizType',
         title: '业务类型',
