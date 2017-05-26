@@ -22,29 +22,34 @@ $(function() {
         title: '原价/市场价',
         required: true,
         amount: true,
-        formatter: moneyFormat,
+        afterSet: function(value) {
+            isNaN(value) && $("#originalPrice").val("");
+        }
     }, {
         field: 'price1',
         title: '人民币价',
         amount: true,
-        formatter: moneyFormat,
         required: true,
         onKeyup: function(value) {
-            var val = parseFloat(value);
-            $("#price2").val(val * rateCB.toFixed(2));
+            var val = parseInt(value);
+            $("#price2").val((val * rateCB).toFixed(2));
+        },
+        afterSet: function(value) {
+            isNaN(value) && $("#price1").val("");
         }
     }, {
         field: 'price2',
         title: '橙币价',
         amount: true,
-        formatter: moneyFormat,
         required: true,
+        afterSet: function(value) {
+            isNaN(value) && $("#price2").val("");
+        }
     }, {
         field: 'price3',
         title: '积分价',
         type: "hidden",
         value: "0",
-        formatter: moneyFormat,
         required: true,
     }, {
         field: 'location',
@@ -63,8 +68,8 @@ $(function() {
         fields: fields,
         code: code,
         detailCode: '808026',
-        addCode: '808010',
-        editCode: '808012',
+        // addCode: '808010',
+        // editCode: '808012',
     });
 
     $("#subBtn").off("click").click(function() {
@@ -72,7 +77,6 @@ $(function() {
             confirm("确认上架？").then(function() {
                 var data = $('#jsForm').serializeObject();
                 data.code = code;
-                // data.price1 = "0";
 
                 reqApi({
                     code: '808013',

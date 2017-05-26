@@ -48,10 +48,10 @@ $(function() {
         },
         required: true,
     }, {
-        field: 'rate3',
+        field: 'rate1',
         title: '返点人民币比例',
     }, {
-        field: 'rate1',
+        field: 'rate2',
         title: '返点橙币比例',
     }, {
         field: 'updateDatetime',

@@ -91,7 +91,7 @@ $(function() {
                         data.toUserId = getUserId();
                         data.currency = "CB";
                         reqApi({
-                            code: '802420',
+                            code: '802413',
                             json: data
                         }).done(function(data) {
                             sucList();

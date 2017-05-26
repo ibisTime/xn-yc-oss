@@ -120,10 +120,10 @@ $(function() {
         required: true,
     }, {
         field: 'rate1',
-        title: '橙币返点比例',
-        //      formatter: function(v, data) {
-        //          return (v * 100) + "%"
-        //      },
+        title: '返点人民币比例'
+    }, {
+        field: 'rate2',
+        title: '返点橙币比例'
     }, {
         field: 'remark',
         title: '备注',

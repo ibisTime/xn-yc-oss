@@ -113,15 +113,15 @@ $(function() {
             readonly: view
         }, {
             field: 'rate1',
-            title: '橙币返点比例',
+            title: '返点人民币比例',
             min: 0,
             max: 1,
             required: true,
         }, {
             field: 'rate2',
-            title: '橙币返点比例',
-            value: "0",
-            type: "hidden",
+            title: '返点橙币比例',
+            min: 0,
+            max: 1,
             required: true,
         }, {
             field: 'rate3',

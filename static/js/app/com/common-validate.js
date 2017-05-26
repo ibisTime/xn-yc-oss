@@ -157,7 +157,7 @@ jQuery.validator.addMethod("url", function(value, element) {
 
 //经度验证
 jQuery.validator.addMethod("west", function(value, element) {
-    var west =  /^(0?\d{1,2}\.\d{1,5}|1[0-7]?\d{1}\.\d{1,10}|180\.0{1,10})$/;
+    var west = /^(0?\d{1,2}\.\d{1,5}|1[0-7]?\d{1}\.\d{1,10}|180\.0{1,10})$/;
     return this.optional(element) || (west.test(value));
 }, "请输入正确的经度格式");
 //纬度验证

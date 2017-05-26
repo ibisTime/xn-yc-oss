@@ -54,24 +54,12 @@ $(function() {
         {
             title: "地址",
             field: "province1",
-            // value: "浙江省宁波市余姚区",
             readonly: true,
             formatter: function(v, data) {
                 var result = (data.province || "") + (data.city || "") + (data.area || "")
                 return result || "-"
             }
-        },
-        // {
-        //     title: '地址',
-        //     field: "province1",
-        //     type: 'select',
-        //     key: "product_location",
-        //     keyCode: '808907',
-        //     required: true,
-        //     type: 'citySelect',
-        //     readonly: view,
-        // }, 
-        {
+        }, {
             title: '详细地址',
             field: 'address',
             required: true,
@@ -114,20 +102,19 @@ $(function() {
             minlength: 20,
             readonly: view
         }, {
-            field: 'rate2',
+            field: 'rate3',
             title: '使用积分比例',
             type: "hidden",
             value: "0",
             required: true
         }, {
-            field: 'rate3',
+            field: 'rate1',
             title: '返点人民币比例',
-            type: "hidden",
-            value: '0',
+            min: 0,
             required: true,
         }, {
-            field: 'rate1',
-            title: '返点橙币比例',
+            field: 'rate2',
+            title: "返点橙币比例",
             min: 0,
             required: true,
         }, {

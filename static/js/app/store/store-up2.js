@@ -25,24 +25,23 @@ $(function() {
             1: "是",
             0: "否",
         },
+        defaultOption: '1',
         required: true,
     }, {
-        field: 'rate2',
+        field: 'rate3',
         title: '使用积分比例',
         value: '0',
         type: 'hidden',
         required: true,
     }, {
-        field: 'rate3',
+        field: 'rate1',
         title: '返点人民币比例',
-        value: '0',
-        type: 'hidden',
+        min: 0,
         required: true,
     }, {
-        field: 'rate1',
-        title: '橙币返点比例',
+        field: 'rate2',
+        title: '返点橙币比例',
         min: 0,
-        max: 1,
         required: true,
     }];
 

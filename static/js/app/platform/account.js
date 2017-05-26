@@ -50,7 +50,7 @@ $(function() {
         dw.showModal();
         buildDetail({
             fields: [{
-                field: 'fromUserId',
+                field: 'toUserId',
                 title: '售卖加盟商',
                 required: true,
                 type: 'select',
@@ -70,10 +70,10 @@ $(function() {
                 formatter: moneyFormat,
                 required: true
             }, {
-                title: '类型',
-                field: 'payType',
+                title: '',
+                field: 'fromUserId',
                 type: "hidden",
-                value: '6',
+                value: sessionStorage.getItem('userId'),
                 required: true
             }],
             container: $('#formContainer'),
@@ -81,34 +81,35 @@ $(function() {
                 title: '售卖',
                 handler: function() {
 
-                    if ($('#fromUserId').val() == "") {
+                    if ($('#toUserId').val() == "") {
                         toastr.error("售卖用户不能为空");
                     } else if ($('#amount').val() == "") {
                         toastr.error("数量不能为空");
                     } else if ($('#popForm').valid()) {
 
                         var data = $('#popForm').serializeObject();
-                        data.toUserId = getUserId();
-                        data.currency = "CB";
+                        // data.toUserId = getUserId();
+                        data.fromCurrency = "CB";
+                        data.toCurrency = "CB";
                         // data.payType = "6";
                         reqApi({
-                            code: '802420',
+                            code: '802413',
                             json: data
                         }).done(function(data) {
                             sucList();
+                            toastr.info("操作成功");
+                            // dw.close().remove();
+                            // var dw1 = dialog({
+                            //     title: '扫描微信二维码付款',
+                            //     content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                            //         '<div id="qrcode"></div></form>',
+                            //     quickClose: true,
+                            // });
 
-                            dw.close().remove();
-                            var dw1 = dialog({
-                                title: '扫描微信二维码付款',
-                                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                                    '<div id="qrcode"></div></form>',
-                                quickClose: true,
-                            });
+                            // dw1.showModal();
 
-                            dw1.showModal();
-
-                            var qrcode = new QRCode('qrcode', data);
-                            qrcode.makeCode(data);
+                            // var qrcode = new QRCode('qrcode', data);
+                            // qrcode.makeCode(data);
                         });
                     }
                 }
