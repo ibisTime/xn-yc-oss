@@ -14,7 +14,7 @@ $(function() {
         search: true
     }, {
         field: 'amount',
-        title: '橙币面值',
+        title: '橙卡面值',
         formatter: moneyFormat
     }, {
         field: 'cnyPrice',

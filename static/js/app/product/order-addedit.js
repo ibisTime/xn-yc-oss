@@ -42,13 +42,13 @@ $(function() {
             formatter: moneyFormat,
             readonly: view,
         }, {
-            title: '橙币总额',
+            title: '橙卡总额',
             field: 'amount2',
             formatter: moneyFormat,
             readonly: view,
         },
         //  {
-        //     title: '已支付橙币总额',
+        //     title: '已支付橙卡总额',
         //     field: 'payAmount2',
         //     formatter: moneyFormat,
         //     readonly: view,
@@ -89,7 +89,7 @@ $(function() {
                 }
             }, {
                 field: 'price2',
-                title: '橙币价格',
+                title: '橙卡价格',
                 formatter: function(v, data) {
                     return moneyFormat(data.price2);
                 }

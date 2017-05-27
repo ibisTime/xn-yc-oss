@@ -66,29 +66,30 @@ $(function() {
             search: true,
             visible: false
         }, {
-            field: 'payUser',
+            field: 'approveUser',
             title: '审核人'
         }, {
-            field: 'payDatetime',
-            title: '审核时间',
+            field: 'approveDatetime',
+            title: '审核日期',
             formatter: dateTimeFormat
         }, {
             field: 'status',
             title: '状态',
             type: 'select',
-            key: 'charge_status',
-            formatter: Dict.getNameForList('charge_status'),
+            key: 'withdraw_status',
+            keyCode: '802006',
+            formatter: Dict.getNameForList('withdraw_status'),
             search: true
         }
     ];
     buildList({
         columns: columns,
-        pageCode: '802705',
+        pageCode: '802755',
         // singleSelect: false,
         searchParams: {
-            channelType: '90',
+            // channelType: '90',
             companyCode: OSS.company,
-            userId: userId
+            // userId: userId
         }
     });
 

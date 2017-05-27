@@ -114,7 +114,7 @@ $(function() {
             required: true,
         }, {
             field: 'rate2',
-            title: "返点橙币比例",
+            title: "返点橙卡比例",
             min: 0,
             required: true,
         }, {

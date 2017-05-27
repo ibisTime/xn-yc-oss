@@ -70,7 +70,7 @@ $(function() {
             title: '审核人'
         }, {
             field: 'payDatetime',
-            title: '审核时间',
+            title: '审核日期',
             formatter: dateTimeFormat
         }, approveNoteField]
     }

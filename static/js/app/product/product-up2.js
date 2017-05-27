@@ -39,7 +39,7 @@ $(function() {
         }
     }, {
         field: 'price2',
-        title: '橙币价',
+        title: '橙卡价',
         amount: true,
         required: true,
         afterSet: function(value) {

@@ -4,6 +4,22 @@ $(function() {
         title: '',
         checkbox: true
     }, {
+        field: 'applyUser',
+        title: '下单人',
+        type: 'select',
+        listCode: "805055",
+        params: {
+            // limit: 1000000,
+            // start: 0,
+            kind: 'f1',
+            updater: ''
+        },
+        keyName: 'userId',
+        valueName: 'mobile',
+        searchName: 'mobile',
+        search: true,
+        visible: false
+    }, {
         field: 'code',
         title: '订单编号',
     }, {
@@ -27,7 +43,7 @@ $(function() {
         formatter: moneyFormat
     }, {
         field: 'payAmount',
-        title: '支付橙币金额',
+        title: '支付橙卡金额',
         formatter: moneyFormat
     }, {
         field: 'amount',

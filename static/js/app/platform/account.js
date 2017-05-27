@@ -97,19 +97,8 @@ $(function() {
                             json: data
                         }).done(function(data) {
                             sucList();
-                            toastr.info("操作成功");
-                            // dw.close().remove();
-                            // var dw1 = dialog({
-                            //     title: '扫描微信二维码付款',
-                            //     content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                            //         '<div id="qrcode"></div></form>',
-                            //     quickClose: true,
-                            // });
-
-                            // dw1.showModal();
-
-                            // var qrcode = new QRCode('qrcode', data);
-                            // qrcode.makeCode(data);
+                            // toastr.info("操作成功");
+                            dw.close().remove();
                         });
                     }
                 }

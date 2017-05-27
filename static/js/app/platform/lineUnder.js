@@ -45,10 +45,10 @@ $(function() {
         }
     }, {
         field: 'applyDatetime',
-        title: '申请时间',
+        title: '申请日期',
         formatter: dateTimeFormat,
         field1: 'applyDateStart',
-        title1: '申请时间',
+        title1: '申请日期',
         type1: 'date',
         field2: 'applyDateEnd',
         type2: 'date',
@@ -74,13 +74,13 @@ $(function() {
         title: '审核人'
     }, {
         field: 'approveDatetime',
-        title: '审核时间',
+        title: '审核日期',
         formatter: dateTimeFormat
     }];
     buildList({
         columns: columns,
         pageCode: '802755',
-        // singleSelect: false,
+        singleSelect: false,
         searchParams: {
             channelType: '90',
             companyCode: OSS.company
@@ -134,6 +134,7 @@ $(function() {
                     required: true,
                     maxlength: 250
                 }],
+                container: $('#formContainer'),
                 buttons: [{
                     title: '通过',
                     handler: function() {
@@ -193,14 +194,10 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-
         if (selRecords.length == 1 && selRecords[0].status == 1) {
-
             window.location.href = "lineUnder_check.html?Code=" + selRecords[0].code;
         } else {
-
             var dataCode = []
-
             for (var i = 0; i < selRecords.length; i++) {
                 dataCode.push(selRecords[i].code)
 
@@ -208,17 +205,13 @@ $(function() {
                     toastr.info(selRecords[i].code + "状态不能审核!");
                     return;
                 }
-
             }
-
             var dw = dialog({
                 content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
                     '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">批量审核</li></ul>' +
                     '</form>'
             });
-
             dw.showModal();
-
             buildDetail({
                 fields: [{
                     field: 'approveNote',
@@ -226,6 +219,7 @@ $(function() {
                     required: true,
                     maxlength: 250
                 }],
+                container: $('#formContainer'),
                 buttons: [{
                     title: '通过',
                     handler: function() {

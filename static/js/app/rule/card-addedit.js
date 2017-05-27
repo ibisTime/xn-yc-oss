@@ -9,7 +9,7 @@ $(function() {
         readonly: true,
         hidden: !view
     }, {
-        title: '橙币面值',
+        title: '橙卡面值',
         field: 'amount',
         readonly: !!view,
         required: true,

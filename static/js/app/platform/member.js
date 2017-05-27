@@ -25,9 +25,6 @@ $(function() {
         field: 'updateDatetime',
         title: '注册时间',
         formatter: dateTimeFormat
-    }, {
-        field: 'remark',
-        title: '车牌号'
     }];
 
     buildList({

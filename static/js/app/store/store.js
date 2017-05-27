@@ -43,7 +43,7 @@ $(function() {
         title: '返点人民币比例',
     }, {
         field: 'rate2',
-        title: '返点橙币比例',
+        title: '返点橙卡比例',
     }, {
         field: 'updateDatetime',
         title: '入驻时间',
@@ -145,7 +145,7 @@ $(function() {
         window.location.href = "store_detail.html?Code=" + selRecords[0].code;
     });
 
-
+    //结算
     $('#yyBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -155,7 +155,7 @@ $(function() {
 
         window.location.href = "yyLedger.html?Code=" + selRecords[0].code;
     });
-
+    //代销
     $('#daixiaoBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -163,18 +163,10 @@ $(function() {
             return;
         }
 
-        window.location.href = "daixiaoLedger.html?Code=" + selRecords[0].code + "&owner=" + selRecords[0].owner + "&c=CGB";
+        window.location.href = "daixiaoLedger.html?Code=" + selRecords[0].code + "&owner=" + selRecords[0].owner + "&c=CB";
     });
 
-    $('#jifenBtn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
 
-        window.location.href = "daixiaoLedger.html?Code=" + selRecords[0].code + "&owner=" + selRecords[0].owner + "&c=CGJF";
-    });
 
 
     $('#goBackBtn').hide();

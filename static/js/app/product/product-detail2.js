@@ -67,7 +67,7 @@ $(function() {
         readonly: view
     }, {
         field: 'price2',
-        title: '橙币价',
+        title: '橙卡价',
         amount: true,
         formatter: moneyFormat,
         required: true,

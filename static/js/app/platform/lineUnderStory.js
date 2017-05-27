@@ -45,12 +45,12 @@ $(function() {
         }
     }, {
         field: 'applyDatetime',
-        title: '申请时间',
+        title: '申请日期',
         formatter: dateTimeFormat,
-        field1: 'applyDatetimeStart',
-        title1: '申请时间',
+        field1: 'applyDateStart',
+        title1: '申请日期',
         type1: 'date',
-        field2: 'applyDatetimeEnd',
+        field2: 'applyDateEnd',
         type2: 'date',
         search: true
     }, {
@@ -74,7 +74,7 @@ $(function() {
         title: '审核人'
     }, {
         field: 'approveDatetime',
-        title: '审核时间',
+        title: '审核日期',
         formatter: dateTimeFormat
     }];
     buildList({
@@ -93,7 +93,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        location.href = "access_check.html?code=" + selRecords[0].code + "&detail=1";
+        location.href = "lineUnder_check.html?code=" + selRecords[0].code + "&detail=1";
     });
 
     $("#huiluBtn").click(function() {

@@ -17,12 +17,12 @@ $(function() {
         search: true,
         formatter: Dict.getNameForList("order_status", "808907"),
     }, {
-        field: 'amount2',
-        title: '橙币总额',
+        field: 'amount1',
+        title: '人民币总额',
         formatter: moneyFormat,
     }, {
-        field: 'payAmount2',
-        title: '已支付橙币总额',
+        field: 'amount2',
+        title: '橙卡总额',
         formatter: moneyFormat,
     }, {
         field: 'applyUser',

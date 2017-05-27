@@ -32,7 +32,7 @@ $(function() {
         formatter: moneyFormat
     }, {
         field: 'payAmount2',
-        title: '支付橙币',
+        title: '支付橙卡',
         formatter: moneyFormat
     }, {
         field: 'status',

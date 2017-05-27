@@ -74,7 +74,7 @@ $(function() {
             title: '审核人'
         }, {
             field: 'payDatetime',
-            title: '审核时间',
+            title: '审核日期',
             formatter: dateTimeFormat
         }, {
             field: 'status',
@@ -89,7 +89,7 @@ $(function() {
     buildList({
         columns: columns,
         pageCode: '802705',
-        // singleSelect: false,
+        singleSelect: false,
         searchParams: {
             channelType: '90',
             companyCode: OSS.company
@@ -145,6 +145,7 @@ $(function() {
                     required: true,
                     maxlength: 250
                 }],
+                container: $('#formContainer'),
                 buttons: [{
                     title: '通过',
                     handler: function() {

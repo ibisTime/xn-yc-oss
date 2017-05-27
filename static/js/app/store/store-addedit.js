@@ -119,13 +119,13 @@ $(function() {
             required: true,
         }, {
             field: 'rate2',
-            title: '返点橙币比例',
+            title: '返点橙卡比例',
             min: 0,
             max: 1,
             required: true,
         }, {
             field: 'rate3',
-            title: '橙币返点比例',
+            title: '橙卡返点比例',
             value: "0",
             type: "hidden",
             required: true,

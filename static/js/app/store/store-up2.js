@@ -18,16 +18,6 @@ $(function() {
         title: '序号',
         required: true,
     }, {
-        field: 'isDefault',
-        title: '是否默认',
-        type: 'select',
-        data: {
-            1: "是",
-            0: "否",
-        },
-        defaultOption: '1',
-        required: true,
-    }, {
         field: 'rate3',
         title: '使用积分比例',
         value: '0',
@@ -40,8 +30,18 @@ $(function() {
         required: true,
     }, {
         field: 'rate2',
-        title: '返点橙币比例',
+        title: '返点橙卡比例',
         min: 0,
+        required: true,
+    }, {
+        field: 'isDefault',
+        title: '是否默认',
+        type: 'select',
+        data: {
+            1: "是",
+            0: "否",
+        },
+        value: '1',
         required: true,
     }];
 

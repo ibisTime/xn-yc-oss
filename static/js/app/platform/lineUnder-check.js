@@ -59,7 +59,7 @@ $(function() {
             title: '审核人'
         }, {
             field: 'approveDatetime',
-            title: '审核时间',
+            title: '审核日期',
             formatter: dateTimeFormat
         }, {
             field: 'approveNote',
@@ -134,7 +134,7 @@ $(function() {
         }
     }, {
         field: 'applyDatetime',
-        title: '申请时间',
+        title: '申请日期',
         formatter: dateTimeFormat,
     }];
 
