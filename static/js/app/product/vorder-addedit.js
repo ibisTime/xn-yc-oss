@@ -87,7 +87,7 @@ $(function() {
         required: true
     }, {
         field: 'payAmount',
-        title: '支付橙卡金额',
+        title: '支付橙券金额',
         formatter: moneyFormat,
         required: true
     }, {

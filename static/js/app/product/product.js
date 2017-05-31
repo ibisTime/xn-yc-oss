@@ -45,7 +45,7 @@ $(function() {
         formatter: moneyFormat,
     }, {
         field: 'price2',
-        title: '橙卡价',
+        title: '橙券价',
         formatter: moneyFormat,
     }, {
         field: 'location',

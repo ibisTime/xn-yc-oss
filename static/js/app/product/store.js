@@ -52,7 +52,7 @@ $(function() {
         title: '返点人民币比例',
     }, {
         field: 'rate2',
-        title: '返点橙卡比例',
+        title: '返点橙券比例',
     }, {
         field: 'updateDatetime',
         title: '入驻时间',

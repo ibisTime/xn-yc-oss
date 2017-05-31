@@ -20,7 +20,7 @@ $(function() {
         formatter: moneyFormat,
     }, {
         field: 'amount2',
-        title: '橙卡总额',
+        title: '橙券总额',
         formatter: moneyFormat,
     }, {
         field: 'applyUser',

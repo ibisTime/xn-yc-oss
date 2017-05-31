@@ -8,7 +8,7 @@ $(function() {
         value: '1'
     }, {
         field: 'rate',
-        title: '橙卡比例',
+        title: '橙券比例',
         number: true,
         min: 0,
         required: true,

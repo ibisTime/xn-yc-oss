@@ -19,7 +19,7 @@ $(function() {
         title: '面值档位',
     }, {
         field: 'rate',
-        title: '橙卡比例',
+        title: '橙券比例',
     }, {
         field: 'status',
         title: '状态',
