@@ -154,6 +154,7 @@ $(function() {
                         data.codeList = dataCode;
                         data.payResult = "1";
                         data.payUser = getUserName();
+                        data.payNote = $("#payNote").val();
                         reqApi({
                             code: '802701',
                             json: data
@@ -172,8 +173,9 @@ $(function() {
                     handler: function() {
                         var data = [];
                         data.codeList = dataCode;
-                        data.payResult = "1";
+                        data.payResult = "0";
                         data.payUser = getUserName();
+                        data.payNote = $("#payNote").val();
                         reqApi({
                             code: '802701',
                             json: data

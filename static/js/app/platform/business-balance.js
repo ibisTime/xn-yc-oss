@@ -50,10 +50,10 @@ $(function() {
         type2: 'date',
         search: true
     }, {
-        field1: 'payDateStart',
+        field1: 'approveDateStart',
         title1: '审核日期',
         type1: 'date',
-        field2: 'payDateEnd',
+        field2: 'approveDateEnd',
         type2: 'date',
         search: true,
         visible: false

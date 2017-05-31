@@ -143,6 +143,7 @@ $(function() {
                         data.codeList = dataCode;
                         data.payResult = "1";
                         data.payUser = getUserName();
+                        data.payNote = $("#payNote").val();
                         reqApi({
                             code: '802753',
                             json: data
@@ -161,8 +162,9 @@ $(function() {
                     handler: function() {
                         var data = [];
                         data.codeList = dataCode;
-                        data.payResult = '1';
+                        data.payResult = '0';
                         data.payUser = getUserName();
+                        data.payNote = $("#payNote").val();
                         reqApi({
                             code: '802753',
                             json: data
@@ -228,6 +230,7 @@ $(function() {
                         data.codeList = dataCode;
                         data.approveResult = "1";
                         data.approveUser = getUserName();
+                        data.approveNote = $("#approveNote").val();
                         reqApi({
                             code: '802752',
                             json: data
@@ -246,8 +249,9 @@ $(function() {
                     handler: function() {
                         var data = [];
                         data.codeList = dataCode;
-                        data.approveResult = "1";
+                        data.approveResult = "0";
                         data.approveUser = getUserName();
+                        data.approveNote = $("#approveNote").val();
                         reqApi({
                             code: '802752',
                             json: data
