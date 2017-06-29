@@ -20,7 +20,29 @@ $(function() {
         readonly: !!view,
         required: true,
         amount: true
+    },{
+        field: 'nnn',
+        title: '收款人',
+        required: true,
+        type: 'select',
+        pageCode: "805054",
+        params: {
+             // kind: '05',
+            updater: ''
+        },
+        // keyCode1: '802006',
+        // dict:[['kind','account_type']],
+        keyName: 'userId',
+        valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
+        searchName: 'mobile',
     }, {
+        title: '用途说明',
+        field: '444',
+        type:"textarea",
+        normalArea:true,
+        readonly: !!view,
+        required: true
+    },{
         title: '创建时间',
         field: 'createDatetime',
         readonly: true,

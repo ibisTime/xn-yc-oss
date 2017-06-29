@@ -16,6 +16,7 @@ $(function() {
     }).then(function(data) {
         window.ossKind = data ? data.kind : '';
         $('#topUserName').html(data.loginName);
+         $('#userName').html(data.loginName);
         sessionStorage.setItem('roleCode', data.roleCode);
         sessionStorage.setItem('userName', data.loginName);
     });
@@ -28,9 +29,25 @@ $(function() {
             'code': sessionStorage.getItem('roleCode')
         }
     }).then(function(data) {
+          $('#role').html(data.name);
         sessionStorage.setItem('roleLevel', data.level);
     });
-
+      //获取公告信息
+   reqApi({
+        code: '804040',
+        cache: true,
+        sync: true,
+        json: {
+           limit:1000,
+           start:0,
+           status:"1",
+           toKind:"3"
+        }
+    }).then(function(data) {
+         $('#smsTitle').html(data.list.length&&data.list[0].smsTitle);
+         $('#smsContent').html(data.list.length&&data.list[0].smsContent);
+         $('#pushedDatetime').html(data.list.length&&dateTimeFormat(data.list[0].pushedDatetime));
+    });
     // 设置根目录
     window.parentCode = 'CYCSM201500000000000000';
 
@@ -90,4 +107,32 @@ function initLefMenu(parentCode) {
 
 function mainReload() {
     window.parent.location.reload(true);
+}
+//时间
+function dateTimeFormat(date) {
+    if (date == '' || typeof(date) == 'undefined') {
+        return '-';
+    }
+    var format = "yyyy-MM-dd hh:mm:ss";
+    date = new Date(date);
+
+    var o = {
+        "M+": date.getMonth() + 1, //month
+        "d+": date.getDate(), //day
+        "h+": date.getHours(), //hour
+        "m+": date.getMinutes(), //minute
+        "s+": date.getSeconds(), //second
+        "q+": Math.floor((date.getMonth() + 3) / 3), //quarter
+        "S": date.getMilliseconds() //millisecond
+    };
+    if (/(y+)/.test(format)) {
+        format = format.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+        }
+    }
+    return format;
 }

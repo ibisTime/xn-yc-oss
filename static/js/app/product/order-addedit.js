@@ -7,14 +7,16 @@ $(function() {
             field: 'kind',
             type: 'hidden',
             value: '1'
-        }, {
-            field: 'orderCode',
-            title: '订单编号',
-            readonly: view,
-            formatter: function(v, data) {
-                return data.productOrderList[0].orderCode
-            }
-        }, {
+        }, 
+        // {
+        //     field: 'code',
+        //     title: '订单编号',
+        //     readonly: view,
+        //     formatter: function(v, data) {
+        //         return data.code
+        //     }
+        // }, 
+        {
             field: 'status',
             title: '订单状态',
             key: "order_status",
@@ -65,36 +67,38 @@ $(function() {
             field: 'reAddress',
             title: '收货地址',
             readonly: view,
-        }, {
-            field: 'productOrderList',
-            title: '商品信息',
-            type: 'o2m',
-            columns: [{
-                field: 'name',
-                title: '商品名称',
-                formatter: function(v, data) {
-                    return data.product.name
-                }
-            }, {
-                field: 'quantity',
-                title: '商品数量',
-                formatter: function(v, data) {
-                    return data.quantity
-                }
-            }, {
-                field: 'price1',
-                title: '人民币价格',
-                formatter: function(v, data) {
-                    return moneyFormat(data.price1);
-                }
-            }, {
-                field: 'price2',
-                title: '橙券价格',
-                formatter: function(v, data) {
-                    return moneyFormat(data.price2);
-                }
-            }]
-        }, {
+        }, 
+        // {
+        //     field: 'productOrderList',
+        //     title: '商品信息',
+        //     type: 'o2m',
+        //     columns: [{
+        //         field: 'name',
+        //         title: '商品名称',
+        //         formatter: function(v, data) {
+        //             return data.product.name
+        //         }
+        //     }, {
+        //         field: 'quantity',
+        //         title: '商品数量',
+        //         formatter: function(v, data) {
+        //             return data.quantity
+        //         }
+        //     }, {
+        //         field: 'price1',
+        //         title: '人民币价格',
+        //         formatter: function(v, data) {
+        //             return moneyFormat(data.price1);
+        //         }
+        //     }, {
+        //         field: 'price2',
+        //         title: '橙券价格',
+        //         formatter: function(v, data) {
+        //             return moneyFormat(data.price2);
+        //         }
+        //     }]
+        // }, 
+        {
             field: 'logisticsCode',
             title: '物流编号',
             readonly: view,

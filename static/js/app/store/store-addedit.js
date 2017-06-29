@@ -57,19 +57,7 @@ $(function() {
             field: "province1",
             value: "浙江省宁波市余姚区",
             readonly: true
-        },
-        // {
-        //     title: '地址',
-        //     field: "province1",
-        //     type: 'select',
-        //     key: "product_location",
-        //     keyCode: '808907',
-        //     required: true,
-        //     type: 'citySelect',
-        //     readonly: view,
-        //     // hidden: !view
-        // },
-        {
+        },{
             title: '详细地址',
             field: 'address',
             required: true,
@@ -160,12 +148,7 @@ $(function() {
         view: view,
         code: code,
         detailCode: '808216',
-        addCode: '808200',
-        // beforeSubmit: function(data) {
-        // data.province = '浙江省';
-        // data.city = '宁波市';
-        // data.area = '余姚区'
-        // }
+        addCode: '808200'
     };
 
     buildDetail(options);
@@ -192,11 +175,7 @@ $(function() {
                     data['city'] = province;
                     data['area'] = city;
                 }
-                // var province = '浙江省';
-                // var city = '宁波市';
-                // var area = '余姚区';
-                // data['province'] = province;
-                // data
+               
             }
             for (var i = 0, len = fields.length; i < len; i++) {
                 var item = fields[i];

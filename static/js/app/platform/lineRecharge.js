@@ -53,17 +53,17 @@ $(function() {
             }
         }, {
             field: 'applyDatetime',
-            title: '申请日期',
+            title: '申请时间',
             formatter: dateTimeFormat,
             field1: 'applyDateStart',
-            title1: '申请日期',
+            title1: '申请时间',
             type1: 'date',
             field2: 'applyDateEnd',
             type2: 'date',
             search: true
         }, {
             field1: 'payDateStart',
-            title1: '审核日期',
+            title1: '审核时间',
             type1: 'date',
             field2: 'payDateEnd',
             type2: 'date',
@@ -74,7 +74,7 @@ $(function() {
             title: '审核人'
         }, {
             field: 'payDatetime',
-            title: '审核日期',
+            title: '审核时间',
             formatter: dateTimeFormat
         }, {
             field: 'status',

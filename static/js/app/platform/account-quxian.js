@@ -1,7 +1,6 @@
 $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-    // var userId = getQueryString('userId') || '';
     var accountNumber = getQueryString('accountNumber');
 
 
@@ -22,6 +21,12 @@ $(function() {
         amount: true,
         formatter: moneyFormat
     }, {
+        title:"取现时间",
+        field:"ee",
+        type:"date",
+        formatter:dateFormat,
+        required: true,
+    },{
         field: 'payCardInfo',
         title: '开户行',
         // type: "select",
@@ -35,6 +40,13 @@ $(function() {
         title: '银行卡号',
         required: true,
         bankCard: true,
+    }, {
+        field: 'remak',
+        title: '备注',
+        required: true,
+        maxlength:255,
+        type:"textarea",
+        normalArea:true
     }];
 
     var options = {

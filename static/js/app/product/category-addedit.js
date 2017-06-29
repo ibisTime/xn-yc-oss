@@ -20,14 +20,13 @@ $(function() {
         keyName: 'code',
         valueName: 'name',
         defaultOption: '选此创建种类',
-        // onChange: function(value) {
-        //     // var val = $("#parentCode").val();
-        //     if (value != "0") {
-        //         $("#pic").css("display", "none")
-        //     } else(
-        //         $("#pic").css("display", "block")
-        //     )
-        // }
+        onChange: function(value) {
+            if (value == 0) {
+                $("#pic").parent().css("display", "block")
+            } else(
+                $("#pic").parent().css("display", "none")
+            )
+        }
     }, {
         field: 'name',
         title: '类别名称',
@@ -41,8 +40,7 @@ $(function() {
         title: '图片',
         field: 'pic',
         type: 'img',
-        single: true,
-        // required: true,
+        required: true,
     }];
 
     buildDetail({

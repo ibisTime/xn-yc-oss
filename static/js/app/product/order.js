@@ -20,7 +20,7 @@ $(function() {
         formatter: moneyFormat,
     }, {
         field: 'amount2',
-        title: '橙券总额',
+        title: '售价（橙券）总额',
         formatter: moneyFormat,
     }, {
         field: 'applyUser',
@@ -51,7 +51,8 @@ $(function() {
         pageCode: '808065',
         searchParams: {
             toUser: OSS.SYS_USER,
-            companyCode: OSS.company
+            companyCode: OSS.company,
+            type:"1"
         }
     });
 
@@ -106,7 +107,7 @@ $(function() {
 
     });
 
-
+//取消
     $('#cancelOrderBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -163,30 +164,30 @@ $(function() {
 
 
     });
+    //确认收货
+    // $('#confirmOrderBtn').click(function() {
+    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
+    //     if (selRecords.length <= 0) {
+    //         toastr.info("请选择记录");
+    //         return;
+    //     }
 
-    $('#confirmOrderBtn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
+    //     if (selRecords[0].status != 3) {
+    //         toastr.info("当前订单状态不能确认收货!");
+    //         return;
+    //     }
 
-        if (selRecords[0].status != 3) {
-            toastr.info("当前订单状态不能确认收货!");
-            return;
-        }
+    //     confirm("确认收货？").then(function() {
+    //         reqApi({
+    //             code: '808057',
+    //             json: { "code": selRecords[0].code }
+    //         }).then(function() {
+    //             toastr.info("操作成功");
+    //             $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+    //         });
+    //     }, function() {});
 
-        confirm("确认收货？").then(function() {
-            reqApi({
-                code: '808057',
-                json: { "code": selRecords[0].code }
-            }).then(function() {
-                toastr.info("操作成功");
-                $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-            });
-        }, function() {});
-
-    });
+    // });
 
 
 });

@@ -1,7 +1,7 @@
 $(function() {
 
     var code = getQueryString('code');
-    var view = 1;
+    var view = getQueryString('v');
     var userId = getUserId();
 
     var fields = [{

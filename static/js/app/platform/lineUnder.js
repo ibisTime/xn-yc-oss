@@ -15,21 +15,19 @@ $(function() {
         field: 'amount',
         title: '金额',
         formatter: moneyFormat
-    }, {
-        field: 'channelType',
-        title: '支付渠道',
-        type: 'select',
-        key: 'channel_type',
-        keyCode: '802006',
-        formatter: Dict.getNameForList('channel_type', '802006'),
-        search: true
-    }, {
+    }, 
+    // {
+    //     field: 'channelType',
+    //     title: '支付渠道',
+    //     type: 'select',
+    //     key: 'channel_type',
+    //     keyCode: '802006',
+    //     formatter: Dict.getNameForList('channel_type', '802006'),
+    //     search: true
+    // }, 
+    {
         field: 'payCardInfo',
-        title: '开户行',
-        // type: "select",
-        // listCode: "802116",
-        // keyName: 'bankCode',
-        // valueName: 'bankName',
+        title: '开户行'
     }, {
         field: 'payCardNo',
         title: '银行卡号',
@@ -45,10 +43,10 @@ $(function() {
         }
     }, {
         field: 'applyDatetime',
-        title: '申请日期',
+        title: '申请时间',
         formatter: dateTimeFormat,
         field1: 'applyDateStart',
-        title1: '申请日期',
+        title1: '申请时间',
         type1: 'date',
         field2: 'applyDateEnd',
         type2: 'date',
@@ -63,7 +61,7 @@ $(function() {
         search: true
     }, {
         field1: 'approveDateStart',
-        title1: '审核日期',
+        title1: '审核时间',
         type1: 'date',
         field2: 'approveDateEnd',
         type2: 'date',
@@ -74,7 +72,14 @@ $(function() {
         title: '审核人'
     }, {
         field: 'approveDatetime',
-        title: '审核日期',
+        title: '审核时间',
+        formatter: dateTimeFormat
+    }, {
+        field: ' ',
+        title: '回录人'
+    }, {
+        field: '',
+        title: '回录时间',
         formatter: dateTimeFormat
     }];
     buildList({

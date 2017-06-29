@@ -81,12 +81,6 @@ function reqApi(options,updateType) {
 	    };
     }
     
-    //车贷权限控制
-    if(options.code == "617015"){
-        commonParams["userId"] = getUserId();
-        commonParams["level"] = getRoleLevel();
-    }
-
     var params = {
         code: options.code,
         json: JSON.stringify($.extend(commonParams, options.json))

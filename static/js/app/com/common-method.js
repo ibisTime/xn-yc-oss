@@ -1128,9 +1128,10 @@ function buildDetail(options) {
         } else if (item.readonly) {
             if (item.type == "citySelect") {
                 html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>' +
-                    '<span id="province" name="province" style="display: inline-block;"></span>' +
-                    '<span id="city" name="city" style="display: inline-block;padding: 0 8px;"></span>' +
-                    '<span id="area" name="area" style="display: inline-block;"></span></li>'
+                    '<span id="province" name="province" style="display: inline-block;"></span>'
+                     // +
+                    // '<span id="city" name="city" style="display: inline-block;padding: 0 8px;"></span>' +
+                    // '<span id="area" name="area" style="display: inline-block;"></span></li>'
             } else if (item.type == 'o2m' && item.useData) {
                 html += '<li class="clearfix" type="' + (item.amount ? 'amount' : '') + '" style="' + (item.width ? ('width: ' + item.width + ';display:inline-block;') : '') + (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + '</label><div id="' + item.field + '" name="' + item.field + '"></div></li>';
             } else if (item.type == "checkbox") {
@@ -1177,9 +1178,10 @@ function buildDetail(options) {
             } else if (item.type == 'textarea' && item.normalArea) {
                 html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;padding: 8px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'citySelect') {
-                html += '<div id="city-group"><select id="province" name="province" class="control-def prov"></select>' +
-                    '<select id="city" name="city" class="control-def city"></select>' +
-                    '<select id="area" name="area" class="control-def dist"></select></div></li>';
+                html += '<div id="city-group"><select id="province" name="province" class="control-def prov"></select>';
+                 // +
+                 //    '<select id="city" name="city" class="control-def city"></select>' +
+                 //    '<select id="area" name="area" class="control-def dist"></select></div></li>';
                 if (item.required) {
                     rules.province = { required: true };
                     // rules.city = {required: true};
@@ -1842,24 +1844,24 @@ function buildDetail(options) {
                             data.city = data.area;
                         }
                         $('#province').val(data.province);
-                        $('#province').trigger('change');
-                        data.city && $('#city').val(data.city);
-                        data.area && $('#area').val(data.area);
-                        if (item.onChange) {
-                            (function(i) {
-                                $("#province").on("change", function(e) {
-                                    i.onChange($("#province").val(), $("#city").val(), $("#area").val());
-                                });
-                                $("#city").on("change", function(e) {
-                                    i.onChange($("#province").val(), $("#city").val(), $("#area").val());
-                                });
-                                $("#area").on("change", function(e) {
-                                    i.onChange($("#province").val(), $("#city").val(), $("#area").val());
-                                });
-                            })(item);
-                        }
-                        data.city ? $('#city').trigger('change') : $('#province').trigger('change');
-                        data.area && $('#area').val(data.area);
+                        // $('#province').trigger('change');
+                        // data.city && $('#city').val(data.city);
+                        // data.area && $('#area').val(data.area);
+                        // if (item.onChange) {
+                        //     (function(i) {
+                        //         $("#province").on("change", function(e) {
+                        //             i.onChange($("#province").val(), $("#city").val(), $("#area").val());
+                        //         });
+                        //         $("#city").on("change", function(e) {
+                        //             i.onChange($("#province").val(), $("#city").val(), $("#area").val());
+                        //         });
+                        //         $("#area").on("change", function(e) {
+                        //             i.onChange($("#province").val(), $("#city").val(), $("#area").val());
+                        //         });
+                        //     })(item);
+                        // }
+                        // data.city ? $('#city').trigger('change') : $('#province').trigger('change');
+                        // data.area && $('#area').val(data.area);
                     } else if (item.type == "o2m" && item.editTable) {
                         var innerHtml = '';
                         if (item.addeditTable) {
@@ -1974,12 +1976,12 @@ function buildDetail(options) {
                         $("#province").on("change", function(e) {
                             i.onChange($("#province").val(), $("#city").val(), $("#area").val());
                         });
-                        $("#city").on("change", function(e) {
-                            i.onChange($("#province").val(), $("#city").val(), $("#area").val());
-                        });
-                        $("#area").on("change", function(e) {
-                            i.onChange($("#province").val(), $("#city").val(), $("#area").val());
-                        });
+                        // $("#city").on("change", function(e) {
+                        //     i.onChange($("#province").val(), $("#city").val(), $("#area").val());
+                        // });
+                        // $("#area").on("change", function(e) {
+                        //     i.onChange($("#province").val(), $("#city").val(), $("#area").val());
+                        // });
                     })(item);
                 }
             } else if (item.type == "o2m" && item.useData) {
@@ -2531,9 +2533,10 @@ function buildDetail1(options) {
             } else if (item.type == 'textarea' && item.normalArea) {
                 html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;" id="' + item.field + '-model" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'citySelect') {
-                html += '<div id="city-group-model"><select id="province-model" name="province" class="control-def prov"></select>' +
-                    '<select id="city-model" name="city" class="control-def city"></select>' +
-                    '<select id="area-model" name="area" class="control-def dist"></select></div></li>';
+                html += '<div id="city-group-model"><select id="province-model" name="province" class="control-def prov"></select>' 
+                // +
+                //     '<select id="city-model" name="city" class="control-def city"></select>' +
+                //     '<select id="area-model" name="area" class="control-def dist"></select></div></li>';
                 if (item.required) {
                     rules["province"] = { required: true };
                     rules["city"] = { required: true };
@@ -3026,10 +3029,10 @@ function buildDetail1(options) {
                         data.city = data.area;
                     }
                     $('#province-model').val(data.province);
-                    $('#province-model').trigger('change');
-                    data.city && $('#city-model').val(data.city);
-                    data.city && $('#city-model').trigger('change');
-                    data.area && $('#area-model').val(data.area);
+                    // $('#province-model').trigger('change');
+                    // data.city && $('#city-model').val(data.city);
+                    // data.city && $('#city-model').trigger('change');
+                    // data.area && $('#area-model').val(data.area);
                 } else {
                     $('#' + item.field + "-model").val(item.amount ? moneyFormat(displayValue) : displayValue);
                 }

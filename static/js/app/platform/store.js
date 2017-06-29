@@ -16,6 +16,7 @@ $(function() {
         valueName: 'name',
         params: {
             type: '2',
+            status:"1"
         },
         search: true
     }, {
@@ -28,9 +29,12 @@ $(function() {
         field: 'smsMobile',
         title: '短信手机号',
     }, {
-        field: 'refereeMobile',
-        title: '店铺推荐人',
-    }, {
+        title:"运营商",
+        field:"refereeMobile"
+    },{
+        title:'折扣',
+        field:""
+    },{
         field: 'status',
         title: '状态',
         type: 'select',
@@ -47,17 +51,20 @@ $(function() {
             0: "否",
         },
         required: true,
-    }, {
-        field: 'rate1',
-        title: '返点人民币比例',
-    }, {
-        field: 'rate2',
-        title: '返点橙券比例',
-    }, {
+    }, 
+    // {
+    //     field: 'rate1',
+    //     title: '返点人民币比例',
+    // }, {
+    //     field: 'rate2',
+    //     title: '返点橙券比例',
+    // }, 
+    {
         field: 'updateDatetime',
         title: '入驻时间',
         formatter: dateTimeFormat,
-    }];
+    }
+    ];
 
     buildList({
         columns: columns,
@@ -127,35 +134,31 @@ $(function() {
 
     });
 
-    $('#detail2Btn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
+    $('#applyBtn').click(function() {
+        
 
-        window.location.href = "store_detail.html?Code=" + selRecords[0].code;
+        window.location.href = "../store/store_addedit.html" ;
     });
 
-    $('#yyBtn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
+    // $('#yyBtn').click(function() {
+    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
+    //     if (selRecords.length <= 0) {
+    //         toastr.info("请选择记录");
+    //         return;
+    //     }
 
-        window.location.href = "yyLedger.html?Code=" + selRecords[0].code;
-    });
+    //     window.location.href = "yyLedger.html?Code=" + selRecords[0].code;
+    // });
 
-    $('#daixiaoBtn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
+    // $('#daixiaoBtn').click(function() {
+    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
+    //     if (selRecords.length <= 0) {
+    //         toastr.info("请选择记录");
+    //         return;
+    //     }
 
-        window.location.href = "daixiaoLedger.html?Code=" + selRecords[0].code + "&owner=" + selRecords[0].owner + "&c=CB";
-    });
+    //     window.location.href = "daixiaoLedger.html?Code=" + selRecords[0].code + "&owner=" + selRecords[0].owner + "&c=CB";
+    // });
 
 
 

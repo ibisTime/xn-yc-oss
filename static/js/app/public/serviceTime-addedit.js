@@ -3,7 +3,7 @@ $(function() {
 	reqApi({
 		code: '807717',
 		json: {
-			ckey: 'reg_protocol'
+			ckey: 'serviceTime'
 		},
 		sync: true
 	}).then(function(data) {
@@ -14,11 +14,10 @@ $(function() {
 	var fields = [{
 		field: 'cvalue',
 		type: 'hidden',
-		value: '注册协议'
+		value: '服务时间'
 	},{
-		title: '内容',
+		title: '时间',
 		field: 'note',
-		type: 'textarea',
 		required: true
 	}];
 	
