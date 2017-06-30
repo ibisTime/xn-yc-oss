@@ -31,10 +31,12 @@ $(function() {
     }, {
         title:"运营商",
         field:"refereeMobile"
-    },{
-        title:'折扣',
-        field:""
-    },{
+    },
+    // {
+    //     title:'折扣',
+    //     field:""
+    // },
+    {
         field: 'status',
         title: '状态',
         type: 'select',

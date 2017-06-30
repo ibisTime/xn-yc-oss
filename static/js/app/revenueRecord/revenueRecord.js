@@ -7,6 +7,17 @@ $(function() {
         title: '',
         checkbox: true
     }, {
+        title:"店铺名称",
+        field:"storeCode2",
+        formatter:function(v,data){
+            return data.store.name;
+        }
+        // type:"select",
+        // listCode:"",
+        // keyName:"",
+        // valueName:"",
+        // search:true
+    },{
         field: 'price',
         title: '消费金额',
         formatter: moneyFormat
@@ -29,14 +40,16 @@ $(function() {
         keyCode: "808907",
         formatter: Dict.getNameForList("store_pay_type", '808907'),
     }, {
-        field: 'payAmount1',
+        field: 'payAmount',
         title: '支付人民币',
         formatter: moneyFormat
-    }, {
-        field: 'payAmount2',
-        title: '支付橙券',
-        formatter: moneyFormat
-    }, {
+    }, 
+    // {
+    //     field: 'payAmount',
+    //     title: '支付橙券',
+    //     formatter: moneyFormat
+    // }, 
+    {
         field: 'status',
         title: '状态',
         type: 'select',
