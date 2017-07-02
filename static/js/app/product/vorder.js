@@ -7,10 +7,8 @@ $(function() {
         field: 'applyUser',
         title: '下单人',
         type: 'select',
-        listCode: "805055",
+        pageCode1: "805054",
         params: {
-            // limit: 1000000,
-            // start: 0,
             kind: 'f1',
             updater: ''
         },

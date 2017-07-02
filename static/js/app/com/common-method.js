@@ -1129,7 +1129,7 @@ function buildDetail(options) {
             if (item.type == "citySelect") {
                 html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>' +
                     '<span id="province" name="province" style="display: inline-block;"></span>'
-                     // +
+                    // +
                     // '<span id="city" name="city" style="display: inline-block;padding: 0 8px;"></span>' +
                     // '<span id="area" name="area" style="display: inline-block;"></span></li>'
             } else if (item.type == 'o2m' && item.useData) {
@@ -1179,9 +1179,9 @@ function buildDetail(options) {
                 html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;padding: 8px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'citySelect') {
                 html += '<div id="city-group"><select id="province" name="province" class="control-def prov"></select>';
-                 // +
-                 //    '<select id="city" name="city" class="control-def city"></select>' +
-                 //    '<select id="area" name="area" class="control-def dist"></select></div></li>';
+                // +
+                //    '<select id="city" name="city" class="control-def city"></select>' +
+                //    '<select id="area" name="area" class="control-def dist"></select></div></li>';
                 if (item.required) {
                     rules.province = { required: true };
                     // rules.city = {required: true};
@@ -2533,10 +2533,10 @@ function buildDetail1(options) {
             } else if (item.type == 'textarea' && item.normalArea) {
                 html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;" id="' + item.field + '-model" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'citySelect') {
-                html += '<div id="city-group-model"><select id="province-model" name="province" class="control-def prov"></select>' 
-                // +
-                //     '<select id="city-model" name="city" class="control-def city"></select>' +
-                //     '<select id="area-model" name="area" class="control-def dist"></select></div></li>';
+                html += '<div id="city-group-model"><select id="province-model" name="province" class="control-def prov"></select>'
+                    // +
+                    //     '<select id="city-model" name="city" class="control-def city"></select>' +
+                    //     '<select id="area-model" name="area" class="control-def dist"></select></div></li>';
                 if (item.required) {
                     rules["province"] = { required: true };
                     rules["city"] = { required: true };

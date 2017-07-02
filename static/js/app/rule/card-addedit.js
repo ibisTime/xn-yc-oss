@@ -21,23 +21,24 @@ $(function() {
         required: true,
         amount: true
     },{
-        field: 'nnn',
+        field: 'receiver',
         title: '收款人',
         required: true,
         type: 'select',
         pageCode: "805054",
+         readonly: !!view,
         params: {
-             // kind: '05',
+            kind:"01",
             updater: ''
         },
         // keyCode1: '802006',
         // dict:[['kind','account_type']],
-        keyName: 'userId',
-        valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
-        searchName: 'mobile',
+        keyName: 'loginName',
+        valueName: 'loginName',
+        searchName: 'loginName',
     }, {
         title: '用途说明',
-        field: '444',
+        field: 'remark',
         type:"textarea",
         normalArea:true,
         readonly: !!view,

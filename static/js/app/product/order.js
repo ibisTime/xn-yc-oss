@@ -15,13 +15,15 @@ $(function() {
         formatter: Dict.getNameForList("order_status", "808907"),
         search: true,
     }, {
-        field: 'amount1',
-        title: '人民币总额',
-        formatter: moneyFormat,
-    }, {
-        field: 'amount2',
-        title: '售价（橙券）总额',
-        formatter: moneyFormat,
+        field: 'payAmount1',
+        title: '支付总额',
+        formatter: function(v,data){
+           if(v != 0){
+            return  moneyFormat(data.payAmount1)
+           }else{
+            return  moneyFormat(data.payAmount2)
+           }
+        }
     }, {
         field: 'applyUser',
         title: '下单用户',
@@ -96,12 +98,15 @@ $(function() {
             confirm("确认已现场发货？").then(function() {
                 reqApi({
                     code: '808055',
-                    json: { "code": selRecords[0].code }
+                    json: { "code": selRecords[0].code,
+                            "updater": sessionStorage.getItem('userName'),
+
+                     }
                 }).then(function() {
                     toastr.info("操作成功");
                     $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
                 });
-            }, function() {});
+            });
         }
 
 

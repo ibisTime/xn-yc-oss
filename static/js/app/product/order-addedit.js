@@ -7,7 +7,7 @@ $(function() {
             field: 'kind',
             type: 'hidden',
             value: '1'
-        }, 
+        },
         // {
         //     field: 'code',
         //     title: '订单编号',
@@ -39,22 +39,25 @@ $(function() {
             formatter: dateTimeFormat,
             readonly: view,
         }, {
-            title: '人民币总额',
-            field: 'amount1',
-            formatter: moneyFormat,
+            field: 'payAmount1',
+            title: '支付总额',
+            formatter: function(v, data) {
+                if (v != 0) {
+                    return moneyFormat(data.payAmount1)
+                } else {
+                    return moneyFormat(data.payAmount2)
+                }
+            },
             readonly: view,
         }, {
-            title: '橙券总额',
-            field: 'amount2',
-            formatter: moneyFormat,
+            field: 'productName',
+            title: '商品名称',
+            readonly: view,
+        }, {
+            field: 'quantity',
+            title: '数量',
             readonly: view,
         },
-        //  {
-        //     title: '已支付橙券总额',
-        //     field: 'payAmount2',
-        //     formatter: moneyFormat,
-        //     readonly: view,
-        // }, 
         {
             field: 'receiver',
             title: '收货人姓名',
@@ -67,9 +70,9 @@ $(function() {
             field: 'reAddress',
             title: '收货地址',
             readonly: view,
-        }, 
+        },
         // {
-        //     field: 'productOrderList',
+        //     field: 'product',
         //     title: '商品信息',
         //     type: 'o2m',
         //     columns: [{
@@ -107,6 +110,7 @@ $(function() {
             title: '物流公司',
             key: "kd_company",
             formatter: Dict.getNameForList("kd_company", "808907"),
+            keyCode: "808907",
             readonly: view,
         }, {
             field: 'deliverer',

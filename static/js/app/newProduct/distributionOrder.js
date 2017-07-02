@@ -15,14 +15,32 @@ $(function() {
         formatter: Dict.getNameForList("order_status", "808907"),
         search: true,
     }, {
-        field: 'amount1',
-        title: '人民币总额',
-        formatter: moneyFormat,
+        field: 'payAmount1',
+        title: '支付总额',
+         formatter: function(v,data){
+           if(v != 0){
+            return  moneyFormat(data.payAmount1)
+           }else{
+            return  moneyFormat(data.payAmount2)
+           }
+        }
     }, {
-        field: 'amount2',
-        title: '售价（橙券）总额',
-        formatter: moneyFormat,
-    }, {
+        field: 'logisticsDate',
+        title: '下次配送时间',
+        // formatter: dateTimeFormat
+    },{
+        field: 'prompt',
+        title: '配送次数',
+        formatter: function(v,data){
+            return   data.logisticsRemain+"/"+data.logisticsSum
+        }
+    }, 
+    // {
+    //     field: 'quantity',
+    //     title: '配送量',
+    //     // formatter: moneyFormat,
+    // },
+    {
         field: 'applyUser',
         title: '下单用户',
         formatter: function(v, data) {
@@ -42,6 +60,14 @@ $(function() {
         search: true,
         formatter: dateTimeFormat
     }, {
+        title:"是否归档",
+        field:"isFiled",
+        type:"select",
+        data:{
+            "1":"已归档",
+            "0":"未归档"
+        }
+    },{
         field: 'remark',
         title: '备注',
     }];
@@ -65,7 +91,7 @@ $(function() {
             return;
         }
            reqApi({
-                code: '',
+                code: '808059',
                 json: { "code": selRecords[0].code }
             }).then(function() {
                 toastr.info("操作成功");
@@ -163,11 +189,16 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-       
+        if (selRecords[0].isFiled == 1) {
+            toastr.info("该记录已归档");
+            return;
+        }
         confirm("确认归档？").then(function() {
             reqApi({
-                code: ' ',
-                json: { "code": selRecords[0].code }
+                code: '808058',
+                json: { "code": selRecords[0].code,
+                       "updater": sessionStorage.getItem('userName')
+                 }
             }).then(function() {
                 toastr.info("操作成功");
                 $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });

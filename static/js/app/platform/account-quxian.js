@@ -4,11 +4,7 @@ $(function() {
     var accountNumber = getQueryString('accountNumber');
 
 
-    var fields = [{
-        field: 'bizType',
-        type: 'hidden',
-        value: '-11'
-    }, {
+    var fields = [ {
         field: 'accountNumber',
         title: '用户账户',
         required: true,
@@ -21,8 +17,8 @@ $(function() {
         amount: true,
         formatter: moneyFormat
     }, {
-        title:"取现时间",
-        field:"ee",
+        title:"支付时间",
+        field:"payDatetime",
         type:"date",
         formatter:dateFormat,
         required: true,
@@ -41,9 +37,9 @@ $(function() {
         required: true,
         bankCard: true,
     }, {
-        field: 'remak',
+        field: 'applyNote',
         title: '备注',
-        required: true,
+        // required: true,
         maxlength:255,
         type:"textarea",
         normalArea:true
@@ -51,9 +47,9 @@ $(function() {
 
     var options = {
         fields: fields,
-        code: code,
-        addCode: '802751',
-        detailCode: '802756',
+        // code: code,
+        addCode: '802754',
+        // detailCode: '802756',
         view: view,
         beforeSubmit: function(data) {
             data.applyUser = getUserId();

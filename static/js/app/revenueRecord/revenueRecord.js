@@ -7,17 +7,17 @@ $(function() {
         title: '',
         checkbox: true
     }, {
-        title:"店铺名称",
-        field:"storeCode2",
-        formatter:function(v,data){
+        title: "店铺名称",
+        field: "storeCode2",
+        formatter: function(v, data) {
             return data.store.name;
         }
-        // type:"select",
-        // listCode:"",
-        // keyName:"",
-        // valueName:"",
-        // search:true
-    },{
+    }, {
+        title: "店铺名称",
+        field: "name",
+        search: true,
+        visible: false
+    }, {
         field: 'price',
         title: '消费金额',
         formatter: moneyFormat
@@ -39,14 +39,10 @@ $(function() {
         search: true,
         keyCode: "808907",
         formatter: Dict.getNameForList("store_pay_type", '808907'),
-    }, {
-        field: 'payAmount',
-        title: '支付人民币',
-        formatter: moneyFormat
     }, 
     // {
     //     field: 'payAmount',
-    //     title: '支付橙券',
+    //     title: '支付人民币',
     //     formatter: moneyFormat
     // }, 
     {
@@ -62,6 +58,14 @@ $(function() {
         title: '创建时间',
         formatter: dateTimeFormat,
     }, {
+        title: '是否归档',
+        field: "isFiled",
+        type: "select",
+        data: {
+            "1": "已归档",
+            "0": "未归档"
+        }
+    }, {
         field: 'remark',
         title: '备注'
     }];
@@ -76,12 +80,29 @@ $(function() {
             companyCode: OSS.company
         }
     });
+    //归档
+    $('#guiDangBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        if (selRecords[0].isField == 1) {
+            toastr.info("该记录已经归档");
+            return;
+        }
 
-    // $('.tools .toolbar').empty();
+        confirm("确认归档？").then(function() {
+            reqApi({
+                code: '808249',
+                json: {
+                    "code": selRecords[0].code
+                }
+            }).then(function() {
+                toastr.info("操作成功");
+                $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+            });
+        });
 
-    // $('.tools .toolbar').html('<li style="display:block;" id="backBtn"><span><img src="/static/images/t01.png"></span>返回</li>');
-    // $('#backBtn').on('click', function() {
-    //     goBack();
-    // });
-
+    });
 });

@@ -62,18 +62,16 @@ $(function() {
         field: 'orderNo',
         title: '序号',
         required: true,
-    },{
-        title:"备注",
-        field:"remark",
-        maxlength:255
+    }, {
+        title: "备注",
+        field: "remark",
+        maxlength: 255
     }];
 
     buildDetail({
         fields: fields,
         code: code,
-        detailCode: '808026',
-        // addCode: '808010',
-        // editCode: '808012',
+        detailCode: '808026'
     });
 
     $("#subBtn").off("click").click(function() {

@@ -8,7 +8,7 @@ $(function() {
     }, {
         field: 'code',
         title: '单号'
-    },{
+    }, {
         field: 'amount',
         title: '橙券面值',
         formatter: moneyFormat
@@ -23,18 +23,23 @@ $(function() {
         type: 'select',
         formatter: Dict.getNameForList('coupon_status'),
         key: 'coupon_status'
-    },{
-        field: '',
-        title: '使用人'
-    },{
+    }, {
+        title: '是否归档',
+        field: "archive",
+        type: "select",
+        data: {
+            "1": "已归档",
+            "0": "未归档"
+        }
+    }, {
         field: 'scannerMobile',
         title: '使用者手机号',
         search: true
     }, {
-        field: '',
+        field: 'receiver',
         title: '收款人'
-    },{
-        field: '',
+    }, {
+        field: 'remark',
         title: '用途说明'
     }];
 
@@ -44,8 +49,9 @@ $(function() {
         searchParams: {
             companyCode: OSS.company
         },
-        singleSelect:false
+        singleSelect: false
     });
+    //作废
     $('#cancelBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -55,12 +61,12 @@ $(function() {
         var dataCode = []
 
         for (var i = 0; i < selRecords.length; i++) {
-                dataCode.push(selRecords[i].code)
+            dataCode.push(selRecords[i].code)
 
-                if (selRecords[i].status != 0) {
-                    toastr.info(selRecords[i].code + "状态不能作废!");
-                    return;
-                }
+            if (selRecords[i].status != 0) {
+                toastr.info(selRecords[i].code + "状态不能作废!");
+                return;
+            }
         }
         confirm("确定作废该卡券？").then(function() {
             reqApi({
@@ -84,10 +90,15 @@ $(function() {
         alink.download = code + ".jpg";
         alink.click();
     }
+    //下载二维码
     $('#downloadBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
+            return;
+        }
+        if (selRecords.length > 1) {
+            toastr.info("请选择一条记录");
             return;
         }
         var code = selRecords[0].code;
@@ -105,11 +116,24 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-       
+
+        if (selRecords[0].archive == 1) {
+            toastr.warning("该记录已经归档");
+            return;
+        }
+        var dataCode = []
+
+        for (var i = 0; i < selRecords.length; i++) {
+            dataCode.push(selRecords[i].code)
+        }
+
         confirm("确认归档？").then(function() {
             reqApi({
-                code: ' ',
-                json: { "code": selRecords[0].code }
+                code: '805323',
+                json: {
+                    "codeList": dataCode,
+                    "updater": sessionStorage.getItem('userName')
+                }
             }).then(function() {
                 toastr.info("操作成功");
                 $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });

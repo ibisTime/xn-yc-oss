@@ -2,6 +2,7 @@ $(function() {
     var view = 1;
     var accountNumberCNY;
     var accountNumberCB;
+    var accountNumberTG;
     reqApi({
         code: '802503',
         json: {
@@ -21,7 +22,7 @@ $(function() {
         }
     }).then(function(data) {
         $("#amount-TG").text("￥" + data[0].amount / 1000);
-        accountNumber = data[0].accountNumber;
+        accountNumberTG = data[0].accountNumber;
     });
 
     $("#CNYls-Btn").click(function() {
@@ -32,11 +33,11 @@ $(function() {
     })
 
     $("#accoutGrantBtn").click(function() {
-        location.href = "../store/ledger.html?accountNumber=" + accountNumber;
+        location.href = "../store/ledger.html?accountNumber=" + accountNumberTG;
     })
     $("#accouBtn").click(
         function() {
-            window.location.href = 'account_quxian.html?accountNumber=' + accountNumber;
+            window.location.href = 'account_quxian.html?accountNumber=' + accountNumberTG;
         }
     );
     // $('#accoutSaleBtn').click(function() {

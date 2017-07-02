@@ -48,7 +48,7 @@ $(function() {
         field: 'location',
         type: "select",
         data: {
-            "index_banner": "首页"
+            "index_banner": "发现"
         },
         value: "index_banner",
         required: true,

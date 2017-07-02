@@ -75,10 +75,10 @@ $(function() {
         title: '审核时间',
         formatter: dateTimeFormat
     }, {
-        field: ' ',
+        field: 'payUser',
         title: '回录人'
     }, {
-        field: '',
+        field: 'payDatetime',
         title: '回录时间',
         formatter: dateTimeFormat
     }];

@@ -13,7 +13,7 @@ $(function() {
 		field: 'location',
         formatter: function(v){
 			if(v == "index_banner"){
-				return '首页';
+				return '发现';
 			}		   
 		},  
         
