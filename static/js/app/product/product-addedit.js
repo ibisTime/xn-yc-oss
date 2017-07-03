@@ -29,7 +29,7 @@ $(function() {
 
 
     var fields = [{
-        fileld: "logisticsSum",
+        field: "logisticsSum",
         type: "hidden",
         value: "1"
     }, {

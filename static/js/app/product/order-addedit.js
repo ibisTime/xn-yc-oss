@@ -49,14 +49,6 @@ $(function() {
                 }
             },
             readonly: view,
-        }, {
-            field: 'productName',
-            title: '商品名称',
-            readonly: view,
-        }, {
-            field: 'quantity',
-            title: '数量',
-            readonly: view,
         },
         {
             field: 'receiver',
@@ -71,6 +63,35 @@ $(function() {
             title: '收货地址',
             readonly: view,
         },
+        {
+            field: 'name',
+            title: '商品名称',
+            formatter: function(v, data) {
+                return data.productName
+            },
+            readonly: view,
+        }, {
+            field: 'quantity',
+            title: '商品数量',
+            formatter: function(v, data) {
+                return data.quantity
+            },
+            readonly: view,
+        }, {
+            field: 'price1',
+            title: '人民币价格',
+            formatter: function(v, data) {
+                return moneyFormat(data.product.price1);
+            },
+            readonly: view,
+        }, {
+            field: 'price2',
+            title: '橙券价格',
+            formatter: function(v, data) {
+                return moneyFormat(data.product.price2);
+            },
+            readonly: view,
+        },
         // {
         //     field: 'product',
         //     title: '商品信息',
@@ -79,7 +100,7 @@ $(function() {
         //         field: 'name',
         //         title: '商品名称',
         //         formatter: function(v, data) {
-        //             return data.product.name
+        //             return data.product.productName
         //         }
         //     }, {
         //         field: 'quantity',
@@ -91,16 +112,16 @@ $(function() {
         //         field: 'price1',
         //         title: '人民币价格',
         //         formatter: function(v, data) {
-        //             return moneyFormat(data.price1);
+        //             return moneyFormat(data.product.price1);
         //         }
         //     }, {
         //         field: 'price2',
         //         title: '橙券价格',
         //         formatter: function(v, data) {
-        //             return moneyFormat(data.price2);
+        //             return moneyFormat(data.product.price2);
         //         }
         //     }]
-        // }, 
+        // },
         {
             field: 'logisticsCode',
             title: '物流编号',

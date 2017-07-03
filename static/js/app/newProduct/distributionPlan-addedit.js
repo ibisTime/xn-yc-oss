@@ -42,7 +42,7 @@ $(function() {
         view: view
     }, {
         field: 'name',
-        title: '商品名称',
+        title: '计划名称',
         required: true,
         maxlength: 20,
         view: view

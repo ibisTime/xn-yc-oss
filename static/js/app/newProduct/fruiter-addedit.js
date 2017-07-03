@@ -62,7 +62,7 @@ $(function() {
         view: view
     }, {
         field: 'name',
-        title: '商品名称',
+        title: '果树名称',
         required: true,
         maxlength: 20,
         view: view

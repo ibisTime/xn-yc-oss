@@ -1,71 +1,79 @@
 $(function() {
     var columns = [{
-        field: '',
-        title: '',
-        checkbox: true
-    }, {
-        field: 'name',
-        title: '店铺名称',
-        search: true
-    }, {
-        field: 'type',
-        title: '分类',
-        type: 'select',
-        listCode: '808007',
-        keyName: 'code',
-        valueName: 'name',
-        params: {
-            type: '2',
-            status:"1"
+            field: '',
+            title: '',
+            checkbox: true
+        }, {
+            field: 'name',
+            title: '店铺名称',
+            search: true
+        }, {
+            field: 'type',
+            title: '分类',
+            type: 'select',
+            listCode: '808007',
+            keyName: 'code',
+            valueName: 'name',
+            params: {
+                type: '2',
+                status: "1"
+            },
+            search: true
+        }, {
+            field: 'legalPersonName',
+            title: '法人姓名',
+        }, {
+            field: 'bookMobile',
+            title: '联系电话',
+        }, {
+            field: 'smsMobile',
+            title: '短信手机号',
+        }, {
+            title: "运营商",
+            field: "refereeMobile",
+            formatter: function(v, data) {
+                if (v) {
+                    return v
+                } else {
+                    return data.updater
+                }
+
+            }
         },
-        search: true
-    }, {
-        field: 'legalPersonName',
-        title: '法人姓名',
-    }, {
-        field: 'bookMobile',
-        title: '联系电话',
-    }, {
-        field: 'smsMobile',
-        title: '短信手机号',
-    }, {
-        title:"运营商",
-        field:"refereeMobile"
-    },
-    // {
-    //     title:'折扣',
-    //     field:""
-    // },
-    {
-        field: 'status',
-        title: '状态',
-        type: 'select',
-        key: "store_status",
-        keyCode: '808907',
-        formatter: Dict.getNameForList("store_status", "808907"),
-        search: true,
-    }, {
-        field: 'isDefault',
-        title: '是否默认',
-        type: 'select',
-        data: {
-            1: "是",
-            0: "否",
+        // {
+        //     title:'折扣',
+        //     field:""
+        // },
+        {
+            field: 'status',
+            title: '状态',
+            type: 'select',
+            key: "store_status",
+            keyCode: '808907',
+            formatter: Dict.getNameForList("store_status", "808907"),
+            search: true,
+        }, {
+            field: 'isDefault',
+            title: '是否默认',
+            type: 'select',
+            data: {
+                1: "是",
+                0: "否",
+            },
+            required: true,
         },
-        required: true,
-    }, 
-    // {
-    //     field: 'rate1',
-    //     title: '返点人民币比例',
-    // }, {
-    //     field: 'rate2',
-    //     title: '返点橙券比例',
-    // }, 
-    {
-        field: 'updateDatetime',
-        title: '入驻时间',
-        formatter: dateTimeFormat,
-    }
+        // {
+        //     field: 'rate1',
+        //     title: '返点人民币比例',
+        // }, {
+        //     field: 'rate2',
+        //     title: '返点橙券比例',
+        // }, 
+        {
+            field: 'updateDatetime',
+            title: '入驻时间',
+            formatter: dateTimeFormat,
+        }
     ];
 
     buildList({
@@ -137,9 +145,9 @@ $(function() {
     });
 
     $('#applyBtn').click(function() {
-        
 
-        window.location.href = "../store/store_addedit.html" ;
+
+        window.location.href = "../store/store_addedit.html";
     });
 
     // $('#yyBtn').click(function() {
