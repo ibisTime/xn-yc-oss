@@ -8,14 +8,83 @@ $(function() {
             type: 'hidden',
             value: '1'
         },
-        // {
-        //     field: 'code',
-        //     title: '订单编号',
-        //     readonly: view,
-        //     formatter: function(v, data) {
-        //         return data.code
-        //     }
-        // }, 
+
+        {
+            title: "商品信息",
+            type: "title"
+        },
+        {
+            field: 'name',
+            title: '商品名称',
+            formatter: function(v, data) {
+                return data.productName
+            },
+            readonly: view,
+        }, {
+            field: 'price1',
+            title: '人民币价格',
+            formatter: function(v, data) {
+                return moneyFormat(data.product.price1);
+            },
+            readonly: view,
+        }, {
+            field: 'price2',
+            title: '橙券价格',
+            formatter: function(v, data) {
+                return moneyFormat(data.product.price2);
+            },
+            readonly: view,
+        },
+        {
+            field: 'price111',
+            title: '库存量',
+            formatter: function(v, data) {
+                return data.productSpecs.quantity;
+            },
+            readonly: view,
+        }, {
+            title: "订单信息",
+            type: "title"
+        }, {
+            title: '规格名称',
+            field: "productSpecs",
+            formatter: function(v, data) {
+                return data.productSpecs.name;
+            },
+            readonly: view,
+        }, {
+            field: 'price11',
+            title: '人民币价格',
+            formatter: function(v, data) {
+                return moneyFormat(data.productSpecs.price1);
+            },
+            readonly: view,
+        }, {
+            field: 'price22',
+            title: '橙券价格',
+            formatter: function(v, data) {
+                return moneyFormat(data.productSpecs.price2);
+            },
+            readonly: view,
+        }, {
+            field: 'payAmount1',
+            title: '支付总额',
+            formatter: function(v, data) {
+                if (v != 0) {
+                    return "人民币：" + moneyFormat(data.payAmount1)
+                } else {
+                    return "橙券：" + moneyFormat(data.payAmount2)
+                }
+            },
+            readonly: view,
+        }, {
+            field: 'price222',
+            title: '发货地',
+            formatter: function(v, data) {
+                return data.productSpecs.province;
+            },
+            readonly: view,
+        },
         {
             field: 'status',
             title: '订单状态',
@@ -38,17 +107,6 @@ $(function() {
             title: '下单时间',
             formatter: dateTimeFormat,
             readonly: view,
-        }, {
-            field: 'payAmount1',
-            title: '支付总额',
-            formatter: function(v, data) {
-                if (v != 0) {
-                    return moneyFormat(data.payAmount1)
-                } else {
-                    return moneyFormat(data.payAmount2)
-                }
-            },
-            readonly: view,
         },
         {
             field: 'receiver',
@@ -63,35 +121,7 @@ $(function() {
             title: '收货地址',
             readonly: view,
         },
-        {
-            field: 'name',
-            title: '商品名称',
-            formatter: function(v, data) {
-                return data.productName
-            },
-            readonly: view,
-        }, {
-            field: 'quantity',
-            title: '商品数量',
-            formatter: function(v, data) {
-                return data.quantity
-            },
-            readonly: view,
-        }, {
-            field: 'price1',
-            title: '人民币价格',
-            formatter: function(v, data) {
-                return moneyFormat(data.product.price1);
-            },
-            readonly: view,
-        }, {
-            field: 'price2',
-            title: '橙券价格',
-            formatter: function(v, data) {
-                return moneyFormat(data.product.price2);
-            },
-            readonly: view,
-        },
+
         // {
         //     field: 'product',
         //     title: '商品信息',

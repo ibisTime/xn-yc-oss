@@ -90,7 +90,7 @@ $(function() {
         required: true,
         view: view
     }, {
-        title: "物流配送时间",
+        title: "成熟时间",
         field: "logisticsDate",
         maxlength: 255,
         required: true,

@@ -23,10 +23,6 @@ $(function() {
         formatter: Dict.getNameForList("currency", '802006'),
         readonly: view
     }, {
-        title: "收款人",
-        field: "receiver",
-        readonly: view
-    }, {
         field: 'createDatetime',
         title: '发放时间',
         formatter: dateTimeFormat,

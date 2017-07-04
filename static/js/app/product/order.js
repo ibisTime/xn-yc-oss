@@ -7,6 +7,12 @@ $(function() {
         field: 'code',
         title: '订单编号',
     }, {
+        title: "商品名称",
+        field: "productName"
+    }, {
+        title: "商品规格",
+        field: "productSpecsName"
+    }, {
         field: 'status',
         title: '订单状态',
         type: "select",
@@ -15,14 +21,17 @@ $(function() {
         formatter: Dict.getNameForList("order_status", "808907"),
         search: true,
     }, {
+        title: "数量",
+        field: "quantity"
+    }, {
         field: 'payAmount1',
         title: '支付总额',
-        formatter: function(v,data){
-           if(v != 0){
-            return  moneyFormat(data.payAmount1)
-           }else{
-            return  moneyFormat(data.payAmount2)
-           }
+        formatter: function(v, data) {
+            if (v != 0) {
+                return "人民币：" + moneyFormat(data.payAmount1)
+            } else {
+                return "橙券：" + moneyFormat(data.payAmount2)
+            }
         }
     }, {
         field: 'applyUser',
@@ -54,7 +63,7 @@ $(function() {
         searchParams: {
             toUser: OSS.SYS_USER,
             companyCode: OSS.company,
-            type:"1"
+            type: "1"
         }
     });
 
@@ -98,10 +107,11 @@ $(function() {
             confirm("确认已现场发货？").then(function() {
                 reqApi({
                     code: '808055',
-                    json: { "code": selRecords[0].code,
-                            "updater": sessionStorage.getItem('userName'),
+                    json: {
+                        "code": selRecords[0].code,
+                        "updater": sessionStorage.getItem('userName'),
 
-                     }
+                    }
                 }).then(function() {
                     toastr.info("操作成功");
                     $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
@@ -112,7 +122,7 @@ $(function() {
 
     });
 
-//取消
+    //取消
     $('#cancelOrderBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {

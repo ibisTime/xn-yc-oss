@@ -108,9 +108,9 @@ $(function() {
     }, {
         title: "物流配送时间",
         field: "logisticsDate",
-        maxlength: 255,
+        value: "配送时间",
         required: true,
-        view: view
+        type: "hidden"
     }, {
         field: 'remark',
         title: '备注',

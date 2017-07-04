@@ -7,6 +7,12 @@ $(function() {
         field: 'code',
         title: '订单编号',
     }, {
+        title: "果树名称",
+        field: "productName"
+    }, {
+        title: "果树规格",
+        field: "productSpecsName"
+    }, {
         field: 'status',
         title: '订单状态',
         type: "select",
@@ -15,14 +21,17 @@ $(function() {
         formatter: Dict.getNameForList("order_status", "808907"),
         search: true,
     }, {
+        title: "数量",
+        field: "quantity"
+    }, {
         field: 'payAmount1',
         title: '支付总额',
-        formatter: function(v,data){
-           if(v != 0){
-            return  moneyFormat(data.payAmount1)
-           }else{
-            return  moneyFormat(data.payAmount2)
-           }
+        formatter: function(v, data) {
+            if (v != 0) {
+                return '人民币：' + moneyFormat(data.payAmount1)
+            } else {
+                return "橙券:" + moneyFormat(data.payAmount2)
+            }
         }
     }, {
         field: 'applyUser',
@@ -43,13 +52,13 @@ $(function() {
         type2: "date",
         search: true,
         formatter: dateTimeFormat
-    },{
-        title:"是否归档",
-        field:"isFiled",
-        type:"select",
-        data:{
-            "1":"已归档",
-            "0":"未归档"
+    }, {
+        title: "是否归档",
+        field: "isFiled",
+        type: "select",
+        data: {
+            "1": "已归档",
+            "0": "未归档"
         }
     }, {
         field: 'remark',
@@ -62,7 +71,7 @@ $(function() {
         searchParams: {
             toUser: OSS.SYS_USER,
             companyCode: OSS.company,
-            type:"2"
+            type: "2"
         }
     });
 
@@ -117,7 +126,7 @@ $(function() {
 
     });
 
-//取消
+    //取消
     $('#cancleBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -174,8 +183,8 @@ $(function() {
 
 
     });
-  
-   //归档 
+
+    //归档 
     $('#guiDangBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -186,13 +195,14 @@ $(function() {
             toastr.info("该记录已归档");
             return;
         }
-       
+
         confirm("确认归档？").then(function() {
             reqApi({
                 code: '808058',
-                json: { "code": selRecords[0].code,
-                       "updater": sessionStorage.getItem('userName')
-                 }
+                json: {
+                    "code": selRecords[0].code,
+                    "updater": sessionStorage.getItem('userName')
+                }
             }).then(function() {
                 toastr.info("操作成功");
                 $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
@@ -200,8 +210,8 @@ $(function() {
         });
 
     });
- //兑换
-         $('#exchangeBtn').click(function() {
+    //兑换
+    $('#exchangeBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -211,21 +221,22 @@ $(function() {
             toastr.info("该记录的状态还不可以兑换");
             return;
         }
-       
-        confirm("确定改订单已经兑换？").then(function() {
-                reqApi({
-                    code: '808055',
-                    json: { "code": selRecords[0].code,
-                        "updater": sessionStorage.getItem('userName'),
 
-                     }
-                }).then(function() {
-                    toastr.info("操作成功");
-                    $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-                });
+        confirm("确定改订单已经兑换？").then(function() {
+            reqApi({
+                code: '808055',
+                json: {
+                    "code": selRecords[0].code,
+                    "updater": sessionStorage.getItem('userName'),
+
+                }
+            }).then(function() {
+                toastr.info("操作成功");
+                $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
             });
+        });
 
     });
- 
+
 
 });

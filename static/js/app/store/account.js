@@ -16,6 +16,7 @@ $(function() {
         $("#amount-CB").text(data[1].amount / 1000);
         accountNumberCB = data[1].accountNumber;
     });
+    console.log(accountNumberCNY)
     reqApi({
         code: '002051',
         json: {
@@ -35,7 +36,7 @@ $(function() {
     })
     $("#accouBtn").click(
         function() {
-            window.location.href = '../platform/account_quxian.html?accountNumber=' + accountNumberCNY;
+            window.location.href = 'account_quxian.html?accountNumberCNY=' + accountNumberCNY;
         }
     );
 

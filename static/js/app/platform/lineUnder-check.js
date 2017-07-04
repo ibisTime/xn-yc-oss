@@ -65,7 +65,7 @@ $(function() {
             field: 'approveNote',
             title: '审核意见'
         }, {
-            field: 'payUser',
+            field: 'pUser',
             title: '回录人'
         }, {
             field: 'payDatetime',

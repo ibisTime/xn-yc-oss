@@ -43,7 +43,7 @@ $(function() {
         pageCode: '802415',
         searchParams: {
             fromUserId: owner,
-            fromCurrency: c,
+            fromCurrency: "CB",
             toCurrency: c,
             status: 1,
             companyCode: OSS.company

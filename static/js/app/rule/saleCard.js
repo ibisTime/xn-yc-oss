@@ -10,16 +10,19 @@ $(function() {
     }, {
         title: '数量',
         field: 'fromAmount',
-        "Z+": true
+        "Z+": true,
+        formatter: moneyFormat
     }, {
         field: "toAmount",
-        title: "价格"
+        title: "价格",
+        formatter: moneyFormat
     }, {
         title: '状态',
         field: "status",
         type: 'select',
-        key: "card_status",
-        formatter: Dict.getNameForList("card_status"),
+        data: { "1": "已发放" }
+        // key: "card_status",
+        // formatter: Dict.getNameForList("card_status"),
         // search:true
     }, {
         field: 'toUserId',
@@ -33,7 +36,20 @@ $(function() {
         keyName: 'userId',
         valueName: 'mobile',
         searchName: 'mobile',
-        search: true
+        search: true,
+        visible: false
+    }, {
+        field: 'loginName',
+        title: '运营商',
+        type: 'select',
+        formatter: function(v, data) {
+            if (data.toUser.kind == "01") {
+                return data.toUser.loginName
+            } else {
+                return data.toUser.mobile
+            }
+        }
+
     }, {
         field: 'receiver',
         title: '收款人',
