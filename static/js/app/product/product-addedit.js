@@ -184,7 +184,10 @@ $(function() {
     });
 
     if (code) {
-        reqApi({ code: '808026', json: { code: code } }).done(function(d) {
+        reqApi({
+            code: '808026',
+            json: { code: code }
+        }).done(function(d) {
             pcode = d.code
             $('#tableList').bootstrapTable('prepend', d.productSpecsList)
         })
@@ -349,7 +352,7 @@ $(function() {
 
                     if ($('#popForm').valid()) {
                         var data = $('#popForm').serializeObject();
-
+                        data.code = selRecords[0].code;
                         $('#tableList').bootstrapTable('updateRow', {
                             index: paramIndex,
                             row: data
@@ -375,6 +378,7 @@ $(function() {
         $('#popForm #quantity').val(selRecords[0].quantity)
         $('#popForm #weight').val(selRecords[0].weight)
         $('#popForm #orderNo').val(selRecords[0].orderNo)
+        $('#popForm #code').val(selRecords[0].code);
 
         dw.showModal();
         dw.__center();

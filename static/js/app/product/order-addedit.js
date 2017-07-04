@@ -21,50 +21,48 @@ $(function() {
             },
             readonly: view,
         }, {
-            field: 'price1',
+            field: 'priceP1',
             title: '人民币价格',
             formatter: function(v, data) {
                 return moneyFormat(data.product.price1);
             },
             readonly: view,
         }, {
-            field: 'price2',
+            field: 'priceP2',
             title: '橙券价格',
             formatter: function(v, data) {
                 return moneyFormat(data.product.price2);
             },
             readonly: view,
         },
+        // {
+        //     field: 'price111',
+        //     title: '库存量',
+        //     formatter: function(v, data) {
+        //         return data.productSpecs.quantity;
+        //     },
+        //     readonly: view,
+        // }, 
         {
-            field: 'price111',
-            title: '库存量',
-            formatter: function(v, data) {
-                return data.productSpecs.quantity;
-            },
-            readonly: view,
-        }, {
             title: "订单信息",
             type: "title"
         }, {
             title: '规格名称',
-            field: "productSpecs",
-            formatter: function(v, data) {
-                return data.productSpecs.name;
-            },
+            field: "productSpecsName",
             readonly: view,
         }, {
-            field: 'price11',
+            field: 'price1',
             title: '人民币价格',
-            formatter: function(v, data) {
-                return moneyFormat(data.productSpecs.price1);
-            },
+            formatter: moneyFormat,
             readonly: view,
         }, {
-            field: 'price22',
+            field: 'price2',
             title: '橙券价格',
-            formatter: function(v, data) {
-                return moneyFormat(data.productSpecs.price2);
-            },
+            formatter: moneyFormat,
+            readonly: view,
+        }, {
+            title: "购买数量",
+            field: "quantity",
             readonly: view,
         }, {
             field: 'payAmount1',
@@ -77,14 +75,15 @@ $(function() {
                 }
             },
             readonly: view,
-        }, {
-            field: 'price222',
-            title: '发货地',
-            formatter: function(v, data) {
-                return data.productSpecs.province;
-            },
-            readonly: view,
         },
+        //  {
+        //     field: 'price222',
+        //     title: '发货地',
+        //     formatter: function(v, data) {
+        //         return data.productSpecs.province;
+        //     },
+        //     readonly: view,
+        // },
         {
             field: 'status',
             title: '订单状态',

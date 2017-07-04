@@ -13,6 +13,6 @@ OSS.picBaseUrl = 'http://oq4vi26fi.bkt.clouddn.com';
 OSS.picShow = '?imageMogr2/auto-orient/thumbnail/!100x100r';
 //系统登录有效时间
 OSS.userValidTime = 30;
-//域名
-//OSS.domain = 'http://m.yc.hichengdai.com';
-OSS.domain = 'http://cm.tour.hichengdai.com';
+//前端域名
+OSS.domain = 'http://m.yc.hichengdai.com';
+// OSS.domain = 'http://cm.tour.hichengdai.com';

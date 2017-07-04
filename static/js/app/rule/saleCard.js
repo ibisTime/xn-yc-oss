@@ -85,7 +85,9 @@ $(function() {
         columns: columns,
         pageCode: "802415",
         searchParams: {
-            companyCode: OSS.company
+            companyCode: OSS.company,
+            fromCurrency: "CNY",
+            toCurrency: "CB"
         }
     });
     //归档 
