@@ -12,15 +12,7 @@ $(function() {
     }, {
         title: "果树规格",
         field: "productSpecsName"
-    }, {
-        field: 'status',
-        title: '订单状态',
-        type: "select",
-        key: "order_status",
-        keyCode: '808907',
-        formatter: Dict.getNameForList("order_status", "808907"),
-        search: true,
-    }, {
+    },{
         title: "数量",
         field: "quantity"
     }, {
@@ -41,6 +33,22 @@ $(function() {
         }
 
     }, {
+        field: 'status',
+        title: '订单状态',
+        type: "select",
+        key: "order_status",
+        keyCode: '808907',
+        formatter: Dict.getNameForList("order_status", "808907"),
+        search: true,
+    },  {
+        title: "是否归档",
+        field: "isFiled",
+        type: "select",
+        data: {
+            "1": "已归档",
+            "0": "未归档"
+        }
+    },{
         field: 'applyDatetime',
         title: '下单时间',
         type: "datetime",
@@ -52,15 +60,7 @@ $(function() {
         type2: "date",
         search: true,
         formatter: dateTimeFormat
-    }, {
-        title: "是否归档",
-        field: "isFiled",
-        type: "select",
-        data: {
-            "1": "已归档",
-            "0": "未归档"
-        }
-    }, {
+    },  {
         field: 'remark',
         title: '备注',
     }];

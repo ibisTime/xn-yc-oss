@@ -14,6 +14,22 @@ $(function() {
             return data.toUser.mobile;
         }
     }, {
+        field: 'toUserId',
+        title: '发放用户',
+        type:"select",
+        pageCode1:"805054",
+        params:{
+            kind:"f2",
+            updater:""
+        },
+        keyName:"userId",
+        valueName:"mobile",
+        search:true,
+        visible:false
+        // formatter: function(v, data) {
+        //     return data.toUser.mobile;
+        // }
+    }, {
         field: 'toAmount',
         title: '发放金额',
         formatter: moneyFormat
@@ -36,6 +52,9 @@ $(function() {
             "1": "已归档",
             "0": "未归档"
         }
+    }, {
+        field: 'remark',
+        title: '备注'
     }];
 
     buildList({
@@ -43,10 +62,10 @@ $(function() {
         pageCode: '802415',
         searchParams: {
             fromUserId: owner,
-            fromCurrency: "CB",
-            toCurrency: c,
-            status: 1,
-            companyCode: OSS.company
+            // fromCurrency: "CB",
+            // toCurrency: c,
+            companyCode: OSS.company,
+            type:"1"
         }
     });
 

@@ -13,7 +13,26 @@ $(function () {
 		formatter: function(v, data){
 			return data.toUser.mobile;
 		}
-	},{
+	},
+	// {
+ //        field: 'toUserId',
+ //        title: '发放用户',
+ //        type:"select",
+ //        pageCode1:"805054",
+ //        params:{
+ //            kind:"f2",
+ //            updater:"",
+ //            userReferee:owner
+ //        },
+ //        keyName:"userId",
+ //        valueName:"mobile",
+ //        search:true,
+ //        visible:false
+ //        // formatter: function(v, data) {
+ //        //     return data.toUser.mobile;
+ //        // }
+ //    }, 
+    {
     	field: 'toAmount',
     	title: '发放金额',
     	formatter: moneyFormat

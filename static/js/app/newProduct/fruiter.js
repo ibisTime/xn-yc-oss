@@ -10,9 +10,11 @@ $(function() {
         }, {
             field: 'price',
             title: '售价（RMB/CQ）',
-            formatter: function(v, data) {
-                return "￥" + moneyFormat(data.price1) + "/" + moneyFormat(data.price2)
-            }
+            formatter: function(v,data){
+             if(data.productSpecsList&&data.productSpecsList.length){
+            return   "￥"+moneyFormat(data.productSpecsList[0].price1)+"/"+moneyFormat(data.productSpecsList[0].price2)
+             }else{ return  "￥-/-"}
+        }
         },
         // {
         //     field: 'price2',
@@ -77,7 +79,7 @@ $(function() {
         deleteCode: '808011',
         searchParams: {
             companyCode: OSS.company,
-            category: "FL2017062717580920664616"
+            category: "FL20170627100000002"
         }
     });
     //上架

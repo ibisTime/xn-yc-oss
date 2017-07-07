@@ -1,66 +1,61 @@
 $(function() {
     var columns = [{
-            field: '',
-            title: '',
-            checkbox: true
-        }, {
-            field: 'code',
-            title: '订单编号',
-        }, {
-            field: 'status',
-            title: '订单状态',
-            type: "select",
-            key: "order_status",
-            keyCode: '808907',
-            search: true,
-            formatter: Dict.getNameForList("order_status", "808907"),
-        }, {
-            field: 'amount1',
-            title: '人民币总额',
-            formatter: moneyFormat,
-        }, {
-            field: 'amount2',
-            title: '橙券总额',
-            formatter: moneyFormat,
-        },
-        // {
-        //     field: 'payAmount2',
-        //     title: '已支付橙券总额',
-        //     formatter: moneyFormat,
-        // },
-        {
-            field: 'applyUser',
-            title: '下单用户',
-            formatter: function(v, data) {
-                return data.user.mobile;
-            },
-            search: true,
-            type: 'select',
-            pageCode1: '805054',
-            params: {
-                kind: 'f1',
-                updater: ''
-            },
-            keyName: 'userId',
-            valueName: 'mobile',
-            searchName: 'mobile',
-        }, {
-            field: 'applyDatetime',
-            title: '下单时间',
-            field1: 'dateStart',
-            title1: '下单时间起',
-            type1: "date",
-            field2: 'dateEnd',
-            title2: '下单时间止',
-            type2: "date",
-            search: true,
-            type: "datetime",
-            formatter: dateTimeFormat
-        }, {
-            field: 'remark',
-            title: '备注',
+        field: '',
+        title: '',
+        checkbox: true
+    }, {
+        field: 'code',
+        title: '订单编号',
+    }, {
+        title: "商品名称",
+        field: "productName"
+    }, {
+        title: "商品规格",
+        field: "productSpecsName"
+    }, {
+        title: "数量",
+        field: "quantity"
+    }, {
+        field: 'payAmount1',
+        title: '支付总额',
+        formatter: function(v, data) {
+            if (v != 0) {
+                return "人民币：" + moneyFormat(data.payAmount1)
+            } else {
+                return "橙券：" + moneyFormat(data.payAmount2)
+            }
         }
-    ];
+    }, {
+        field: 'applyUser',
+        title: '下单用户',
+        formatter: function(v, data) {
+            return data.user.mobile;
+        }
+
+    }, {
+        field: 'status',
+        title: '订单状态',
+        type: "select",
+        key: "order_status",
+        keyCode: '808907',
+        formatter: Dict.getNameForList("order_status", "808907"),
+        search: true,
+    }, {
+        field: 'applyDatetime',
+        title: '下单时间',
+        type: "datetime",
+        field1: 'dateStart',
+        title1: '下单时间起',
+        type1: "date",
+        field2: 'dateEnd',
+        title2: '下单时间止',
+        type2: "date",
+        search: true,
+        formatter: dateTimeFormat
+    }, {
+        field: 'remark',
+        title: '备注',
+    }];
 
     buildList({
         columns: columns,

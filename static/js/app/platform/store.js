@@ -29,7 +29,7 @@ $(function() {
             field: 'smsMobile',
             title: '短信手机号',
         }, {
-            title: "运营商",
+            title: "加盟商",
             field: "refereeMobile",
             formatter: function(v, data) {
                 if (v) {
@@ -39,11 +39,13 @@ $(function() {
                 }
 
             }
+        },{
+            field: 'rate1',
+            title: '返点人民币比例',
+        }, {
+            field: 'rate2',
+            title: '返点橙券比例',
         },
-        // {
-        //     title:'折扣',
-        //     field:""
-        // },
         {
             field: 'status',
             title: '状态',
@@ -61,15 +63,7 @@ $(function() {
                 0: "否",
             },
             required: true,
-        },
-        {
-            field: 'rate1',
-            title: '返点人民币比例',
-        }, {
-            field: 'rate2',
-            title: '返点橙券比例',
-        },
-        {
+        },{
             field: 'updateDatetime',
             title: '入驻时间',
             formatter: dateTimeFormat,

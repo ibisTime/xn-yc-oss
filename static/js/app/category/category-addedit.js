@@ -7,21 +7,19 @@ $(function() {
         field: 'kind',
         type: 'hidden',
         value: '1'
-    }, 
-    {
+    }, {
         title: '大类',
         field: 'parentCode',
         required: true,
-        type:"hidden",
-        value:"0",
-        // type: 'select',
-        // listCode: '808007',
-        // params: {
-        //     type: "1",
-        //     parentCode: 0
-        // },
-        // keyName: 'code',
-        // valueName: 'name',
+        type: 'select',
+        listCode: '808007',
+        params: {
+            type: "1",
+            parentCode: 0,
+            // status:"1"
+        },
+        keyName: 'code',
+        valueName: 'name',
         // defaultOption: '选此创建种类',
         // onChange: function(value) {
         //     if (value == 0) {
@@ -30,8 +28,7 @@ $(function() {
         //         $("#pic").parent().css("display", "none")
         //     )
         // }
-    },
-     {
+    }, {
         field: 'name',
         title: '类别名称',
         required: true,
@@ -40,11 +37,6 @@ $(function() {
         title: '次序',
         required: true,
         number: true,
-    }, {
-        title: '图片',
-        field: 'pic',
-        type: 'img',
-        required: true,
     }];
 
     buildDetail({

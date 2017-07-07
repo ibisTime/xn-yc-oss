@@ -12,15 +12,7 @@ $(function() {
     }, {
         title: "商品规格",
         field: "productSpecsName"
-    }, {
-        field: 'status',
-        title: '订单状态',
-        type: "select",
-        key: "order_status",
-        keyCode: '808907',
-        formatter: Dict.getNameForList("order_status", "808907"),
-        search: true,
-    }, {
+    },  {
         title: "数量",
         field: "quantity"
     }, {
@@ -41,6 +33,22 @@ $(function() {
         }
 
     }, {
+        field: 'status',
+        title: '订单状态',
+        type: "select",
+        key: "order_status",
+        keyCode: '808907',
+        formatter: Dict.getNameForList("order_status", "808907"),
+        search: true,
+    }, {
+            title: "是否归档",
+            field: "isFiled",
+            type: "select",
+            data: {
+                "1": "已归档",
+                "0": "未归档"
+            }
+        },{
         field: 'applyDatetime',
         title: '下单时间',
         type: "datetime",
@@ -66,8 +74,32 @@ $(function() {
             type: "1"
         }
     });
+//归档
+    $('#guiDangBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        if (selRecords[0].isFiled == 1) {
+            toastr.info("该记录已归档");
+            return;
+        }
+        confirm("确认归档？").then(function() {
+            reqApi({
+                code: '808058',
+                json: {
+                    "code": selRecords[0].code,
+                    "updater": sessionStorage.getItem('userName')
+                }
+            }).then(function() {
+                toastr.info("操作成功");
+                $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+            });
+        });
 
-
+    });
+//物流发货
     $('#sendOutGoodsBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -88,7 +120,7 @@ $(function() {
         }
 
     });
-
+//现场发货
     $('#spotDeliveryBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {

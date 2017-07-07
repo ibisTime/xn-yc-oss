@@ -1,43 +1,48 @@
 $(function() {
     var columns = [{
-        field: '',
-        title: '',
-        checkbox: true
-    }, {
-        field: 'name',
-        title: '类别名称',
-        search: true,
-    }, {
-        field: 'parentCode',
-        title: '大类',
-        search: true,
-        type: 'select',
-        listCode: '808007',
-        params: {
-            type: "1",
-            parentCode: 0
+            field: '',
+            title: '',
+            checkbox: true
+        }, {
+            field: 'name',
+            title: '类别名称',
+            search: true,
         },
-        keyName: 'code',
-        valueName: 'name',
-    }, {
-        field: 'status',
-        title: '状态',
-        key: "category_status",
-        keyCode: "808907",
-        search: true,
-        formatter: Dict.getNameForList("category_status", "808907"),
-    }, {
-        field: 'orderNo',
-        title: '次序',
-        sortable: true,
-    }];
+        //  {
+        //     field: 'parentCode',
+        //     title: '大类',
+        //     search: true,
+        //     type: 'select',
+        //     listCode: '808007',
+        //     params: {
+        //         type: "1",
+        //         parentCode: 0
+        //     },
+        //     keyName: 'code',
+        //     valueName: 'name',
+        // },
+        {
+            field: 'status',
+            title: '状态',
+            key: "category_status",
+            keyCode: "808907",
+            search: true,
+            formatter: Dict.getNameForList("category_status", "808907"),
+        }, {
+            field: 'orderNo',
+            title: '次序',
+            sortable: true,
+        }
+    ];
 
     buildList({
         columns: columns,
         pageCode: '808005',
         searchParams: {
             type: "1",
-            companyCode: OSS.company
+            companyCode: OSS.company,
+            parentCode: "0"
+
         }
     });
 

@@ -64,14 +64,15 @@ $(function() {
         window.location.href = "AllianceBusiness.html";
     });
 
-    $('#detail2Btn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
+    // $('#detail2Btn').click(function() {
+    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
+    //     if (selRecords.length <= 0) {
+    //         toastr.info("请选择记录");
+    //         return;
+    //     }
 
-        window.location.href = "../store/order_addedit.html?code=" + selRecords[0].code + "&v=1";
-    });
+    //     window.location.href = "../store/order_addedit.html?code=" + selRecords[0].code + "&v=1";
+    // });
+    $('#detail2Btn').remove();
 
 });

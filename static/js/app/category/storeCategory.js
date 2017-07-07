@@ -7,21 +7,19 @@ $(function() {
         field: 'name',
         title: '类别名称',
         search: true,
-    },
-    //  {
-    //     field: 'parentCode',
-    //     title: '大类',
-    //     search: true,
-    //     type: 'select',
-    //     listCode: '808007',
-    //     params: {
-    //         type: '2',
-    //         parentCode: 0
-    //     },
-    //     keyName: 'code',
-    //     valueName: 'name',
-    // }, 
-    {
+    }, {
+        field: 'parentCode',
+        title: '大类',
+        search: true,
+        type: 'select',
+        listCode: '808007',
+        params: {
+            type: '2',
+            parentCode: 0
+        },
+        keyName: 'code',
+        valueName: 'name',
+    }, {
         field: 'status',
         title: '状态',
         key: "category_status",
@@ -39,7 +37,8 @@ $(function() {
         pageCode: '808005',
         searchParams: {
             type: "2",
-            companyCode: OSS.company
+            companyCode: OSS.company,
+            noParentCode:"0"
         }
     });
 

@@ -8,20 +8,20 @@ $(function() {
 		type: 'hidden',
 		value: '1'
 	},
-	{
-        title: '所属大类',
-        field: 'parentCode',
-         required: true,
-        type: 'select',
-        listCode: '808007',
-        params: {
-            type: "2",
-            parentCode: 0
-        },
-        keyName: 'code',
-        valueName: 'name',
-        defaultOption: '选此创建大类',
-    }, 
+	// {
+ //        title: '所属大类',
+ //        field: 'parentCode',
+ //         required: true,
+ //        type: 'select',
+ //        listCode: '808007',
+ //        params: {
+ //            type: "2",
+ //            parentCode: 0
+ //        },
+ //        keyName: 'code',
+ //        valueName: 'name',
+ //        defaultOption: '选此创建大类',
+ //    }, 
      {
         field: 'name',
         title: '类别名称',
@@ -30,7 +30,7 @@ $(function() {
 		title: '图片',
 		field: 'pic',
 		type: 'img',
-		// required: true,
+		 required: true,
 	}, {
         field: 'orderNo',
         title: '次序',
@@ -46,7 +46,7 @@ $(function() {
 		editCode: '808002',
 		beforeSubmit: function(data){
 			data.type = "2";
-			// data.parentCode ="0";
+			data.parentCode ="0";
 			
 			return data;
 		}

@@ -9,59 +9,37 @@ $(function() {
             value: '1'
         },
         {
-            title: "果树信息",
-            type: "title"
-        },
-        {
             field: 'name',
             title: '果树名称',
             formatter: function(v, data) {
                 return data.productName
             },
             readonly: view,
-        }, {
-            field: 'priceP1',
-            title: '人民币价格',
-            formatter: function(v, data) {
-                return moneyFormat(data.product.price1);
-            },
-            readonly: view,
-        }, {
-            field: 'priceP2',
-            title: '橙券价格',
-            formatter: function(v, data) {
-                return moneyFormat(data.product.price2);
-            },
-            readonly: view,
-        },
-        //  {
-        //     field: 'price111',
-        //     title: '库存量',
-        //     formatter: function(v, data) {
-        //         return data.productSpecs.quantity;
-        //     },
-        //     readonly: view,
-        // }, 
-        {
-            title: "订单信息",
-            type: "title"
-        }, {
+        },  {
             title: '规格名称',
             field: "productSpecsName",
             readonly: view,
-        }, {
+        },{
             field: 'price1',
-            title: '人民币价格',
-            formatter: moneyFormat,
+            title: '商品价格',
+            formatter: function(v, data) {
+                if (data.price2 != 0 && v !=0) {
+                    return "人民币：" + moneyFormat(data.price1)+";橙券：" + moneyFormat(data.price2)
+                } 
+            },
             readonly: view,
-        }, {
-            field: 'price2',
-            title: '橙券价格',
-            formatter: moneyFormat,
-            readonly: view,
-        }, {
-            title: "认购数量",
+        },  {
+            title: "购买数量",
             field: "quantity",
+            readonly: view,
+        },{
+            field: 'amount1',
+            title: '订单总额',
+            formatter: function(v, data) {
+                if (v != 0 && data.amount2 !=0) {
+                    return "人民币：" + moneyFormat(data.amount1)+";橙券：" + moneyFormat(data.amount2)
+                } 
+            },
             readonly: view,
         }, {
             field: 'payAmount1',
@@ -74,14 +52,7 @@ $(function() {
                 }
             },
             readonly: view,
-        },
-        {
-            field: 'status',
-            title: '订单状态',
-            key: "order_status",
-            formatter: Dict.getNameForList("order_status", "808907"),
-            readonly: view,
-        }, {
+        },{
             field: 'applyUser',
             title: '下单用户',
             readonly: view,
@@ -89,6 +60,21 @@ $(function() {
                 return data.user.mobile
             }
         }, {
+            field: 'status',
+            title: '订单状态',
+            key: "order_status",
+            formatter: Dict.getNameForList("order_status", "808907"),
+            readonly: view,
+        }, {
+            title: "是否归档",
+            field: "isFiled",
+            type: "select",
+            data: {
+                "1": "已归档",
+                "0": "未归档"
+             },
+             readonly: view,
+        },{
             field: 'applyNote',
             title: '下单说明',
             readonly: view,

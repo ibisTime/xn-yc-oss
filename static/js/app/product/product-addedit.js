@@ -17,7 +17,7 @@ $(function() {
         sync: true
     }).done(function(data) {
         for (var i = 0, len = data.length; i < len; i++) {
-            if (data[i].code == "FL2017062717580920664616" || data[i].code == "FL2017062716471159133341") {
+            if (data[i].code == "FL20170627100000002" || data[i].code == "FL20170627100000001") {
                 categoryDict1[data[i].code] = data[i].name;
             } else {
                 categoryDict[data[i].code] = data[i].name;
@@ -46,7 +46,8 @@ $(function() {
             $("#type").renderDropdown({
                 listCode: '808007',
                 params: {
-                    parentCode: v
+                    parentCode: v,
+                    status: "1"
                 },
                 keyName: 'code',
                 valueName: 'name',
@@ -59,6 +60,7 @@ $(function() {
         type: 'select',
         listCode: '808007',
         params: {
+            status: "1",
             parentCode: $("#category").val()
         },
         keyName: 'code',
@@ -72,16 +74,16 @@ $(function() {
         required: true,
         view: view
     }, {
-        title: "销售状态",
-        field: "saleStatus",
-        maxlengthh: 255,
-        required: true
-    }, {
         field: 'name',
         title: '商品名称',
         required: true,
         maxlength: 20,
         view: view
+    }, {
+        title: "销售状态",
+        field: "saleStatus",
+        maxlengthh: 255,
+        required: true
     }, {
         field: 'slogan',
         title: '广告语',
@@ -142,6 +144,12 @@ $(function() {
             field: 'name',
             title: '规格名称',
             required: true,
+        }, {
+            field: 'originalPrice',
+            title: '原价',
+            amount: true,
+            required: true,
+            formatter: moneyFormat,
         }, {
             field: 'price1',
             title: '人民币价',
@@ -214,6 +222,12 @@ $(function() {
                 field: 'name',
                 title: '规格名称',
                 required: true,
+            }, {
+                field: 'originalPrice',
+                title: '原价',
+                amount: true,
+                required: true,
+                formatter: moneyFormat,
             }, {
                 field: 'price1',
                 title: '人民币价',
@@ -313,6 +327,12 @@ $(function() {
                 title: '规格名称',
                 required: true,
             }, {
+                field: 'originalPrice',
+                title: '原价',
+                amount: true,
+                required: true,
+                formatter: moneyFormat,
+            }, {
                 field: 'price1',
                 title: '人民币价',
                 amount: true,
@@ -370,14 +390,15 @@ $(function() {
                 }
             }]
         });
-
-        $('#popForm #name').val(selRecords[0].name)
-        $('#popForm #price2').val(moneyFormat(selRecords[0].price2))
-        $('#popForm #price1').val(moneyFormat(selRecords[0].price1))
-        $('#popForm #province').val(selRecords[0].province)
-        $('#popForm #quantity').val(selRecords[0].quantity)
-        $('#popForm #weight').val(selRecords[0].weight)
-        $('#popForm #orderNo').val(selRecords[0].orderNo)
+        //originalPrice
+        $('#popForm #name').val(selRecords[0].name);
+        $('#popForm #originalPrice').val(moneyFormat(selRecords[0].originalPrice));
+        $('#popForm #price2').val(moneyFormat(selRecords[0].price2));
+        $('#popForm #price1').val(moneyFormat(selRecords[0].price1));
+        $('#popForm #province').val(selRecords[0].province);
+        $('#popForm #quantity').val(selRecords[0].quantity);
+        $('#popForm #weight').val(selRecords[0].weight);
+        $('#popForm #orderNo').val(selRecords[0].orderNo);
         $('#popForm #code').val(selRecords[0].code);
 
         dw.showModal();

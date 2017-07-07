@@ -15,7 +15,7 @@ $(function() {
         title: '大类',
         type: 'hidden',
         required: true,
-        value: 'FL2017062717580920664616',
+        value: 'FL20170627100000002',
         // listCode: '808007',
         // params: {
         // 	type: "1",
@@ -40,7 +40,7 @@ $(function() {
         type: 'select',
         listCode: '808007',
         params: {
-            parentCode: 'FL2017062717580920664616',
+            parentCode: 'FL20170627100000002',
             status: "1",
             type: "1"
         },
@@ -48,25 +48,25 @@ $(function() {
         valueName: 'name',
         required: true,
         view: view
-    }, {
+    },{
         title: '产品品种',
         field: "strain",
         maxlength: 255,
         required: true,
         view: view
-    }, {
-        title: "销售状态",
-        field: "saleStatus",
-        maxlengthh: 255,
-        required: true,
-        view: view
-    }, {
+    },{
         field: 'name',
         title: '果树名称',
         required: true,
         maxlength: 20,
         view: view
-    }, {
+    },  {
+        title: "销售状态",
+        field: "saleStatus",
+        maxlengthh: 255,
+        required: true,
+        view: view
+    },  {
         field: 'slogan',
         title: '广告语',
         required: true,
@@ -128,7 +128,7 @@ $(function() {
             field: '',
             title: '',
             checkbox: true
-        }, {
+        },{
             field: 'name',
             title: '规格名称',
             required: true,
@@ -144,20 +144,22 @@ $(function() {
             amount: true,
             required: true,
             formatter: moneyFormat,
-        }, {
-            title: "发货地",
-            field: "province",
-            type: "citySelect",
-            required: true
-        }, {
-            field: 'weight',
-            title: '重量（kg）',
-            number: true,
-            required: true,
-        }, {
+        }, 
+        // {
+        //     title: "发货地",
+        //     field: "province",
+        //     type: "citySelect",
+        //     // required: true
+        // }, {
+        //     field: 'weight',
+        //     title: '重量（kg）',
+        //     number: true,
+        //     // required: true,
+        // }, 
+        {
             field: 'quantity',
             title: '库存',
-            required: true,
+            // required: true,
             number: true,
         }, {
             field: 'orderNo',
@@ -196,7 +198,7 @@ $(function() {
                 field: 'name',
                 title: '规格名称',
                 required: true,
-            }, {
+            },  {
                 field: 'price1',
                 title: '人民币价',
                 amount: true,
@@ -208,18 +210,7 @@ $(function() {
                 amount: true,
                 required: true,
                 formatter: moneyFormat,
-            }, {
-                title: "发货地",
-                field: "province",
-                type: "citySelect",
-                required: true
-            }, {
-                field: 'weight',
-                title: '重量（kg）',
-                number: true,
-                required: true,
-                formatter: moneyFormat,
-            }, {
+            },{
                 field: 'quantity',
                 title: '库存',
                 required: true,
@@ -306,17 +297,7 @@ $(function() {
                 amount: true,
                 required: true,
                 formatter: moneyFormat,
-            }, {
-                title: "发货地",
-                field: "province",
-                type: "citySelect",
-                required: true
-            }, {
-                field: 'weight',
-                title: '重量（kg）',
-                number: true,
-                required: true,
-            }, {
+            },{
                 field: 'quantity',
                 title: '库存',
                 number: true,
@@ -356,9 +337,8 @@ $(function() {
         $('#popForm #name').val(selRecords[0].name)
         $('#popForm #price2').val(moneyFormat(selRecords[0].price2))
         $('#popForm #price1').val(moneyFormat(selRecords[0].price1))
-        $('#popForm #province').val(selRecords[0].province)
+        // $('#popForm #originalPrice').val(moneyFormat(selRecords[0].originalPrice))  
         $('#popForm #quantity').val(selRecords[0].quantity)
-        $('#popForm #weight').val(selRecords[0].weight)
         $('#popForm #orderNo').val(selRecords[0].orderNo)
 
         dw.showModal();

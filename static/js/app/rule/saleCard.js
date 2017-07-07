@@ -16,15 +16,7 @@ $(function() {
         field: "toAmount",
         title: "价格",
         formatter: moneyFormat
-    }, {
-        title: '状态',
-        field: "status",
-        type: 'select',
-        data: { "1": "已发放" }
-        // key: "card_status",
-        // formatter: Dict.getNameForList("card_status"),
-        // search:true
-    }, {
+    },  {
         field: 'toUserId',
         title: '运营商',
         type: 'select',
@@ -65,7 +57,19 @@ $(function() {
         valueName: 'loginName',
         searchName: 'loginName',
         search: true
-    }, {
+    },{
+        title: '状态',
+        field: "status",
+        type: 'select',
+        data: {
+            "1": "已发放",
+            // "0": "待支付"
+        },
+        // search: true
+        // key: "card_status",
+        // formatter: Dict.getNameForList("card_status"),
+        // search:true
+    },{
         title: "是否归档",
         field: "isFiled",
         type: "select",
@@ -74,6 +78,10 @@ $(function() {
             "0": "未归档"
         }
     }, {
+            title: '创建时间',
+            field: 'createDatetime',
+            formatter: dateTimeFormat
+        }, {
         field: 'remark',
         title: '用途说明',
         maxlength: 255,
@@ -86,8 +94,7 @@ $(function() {
         pageCode: "802415",
         searchParams: {
             companyCode: OSS.company,
-            fromCurrency: "CNY",
-            toCurrency: "CB"
+            type:"0"
         }
     });
     //归档 
@@ -112,5 +119,15 @@ $(function() {
         });
 
     });
+     $('#detaBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
 
+
+        window.location.href = "saleCard_detail.html?v=1&Code=" + selRecords[0].code;
+
+    });
 });

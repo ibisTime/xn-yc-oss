@@ -9,17 +9,17 @@ $(function() {
         field: 'price',
         title: '消费金额',
         formatter: moneyFormat
-    }, {
-        field: 'backAmount',
-        title: '返现金额',
-        formatter: moneyFormat
-    }, {
+    },{
         field: 'backCurrency',
         title: '返现币种',
         key: 'currency',
         keyCode: "802006",
         formatter: Dict.getNameForList("currency", '802006'),
     }, {
+        field: 'backAmount',
+        title: '返现金额',
+        formatter: moneyFormat
+    },  {
         field: 'payType',
         title: '买单方式',
         key: 'store_pay_type',

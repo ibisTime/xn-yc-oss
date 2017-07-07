@@ -110,6 +110,20 @@ $(function() {
         title: '序号',
         required: true,
     }, {
+        field: 'rate1',
+        title: '返点人民币比例'
+    }, {
+        field: 'rate2',
+        title: '返点橙券比例'
+    },{
+            field: 'status',
+            title: '状态',
+            type: 'select',
+            key: "store_status",
+            keyCode: '808907',
+            formatter: Dict.getNameForList("store_status", "808907"),
+            search: true,
+    }, {
         field: 'isDefault',
         title: '是否默认',
         type: 'select',
@@ -118,13 +132,7 @@ $(function() {
             0: "否",
         },
         required: true,
-    }, {
-        field: 'rate1',
-        title: '返点人民币比例'
-    }, {
-        field: 'rate2',
-        title: '返点橙券比例'
-    }, {
+    },  {
         field: 'remark',
         title: '备注',
         readonly: view

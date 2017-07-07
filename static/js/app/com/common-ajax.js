@@ -69,14 +69,14 @@ function reqApi(options,updateType) {
 	        token: sessionStorage.getItem('token') || '',
 	        updater: sessionStorage.getItem('userName'),
 	        systemCode: sessionStorage.getItem('systemCode'),
-	        companyCode: OSS.company
+	        companyCode: OSS.company,
 	         //updaterId: sessionStorage.getItem('userId'),
 	    };
     }else{
     	var commonParams = {
 	        token: sessionStorage.getItem('token') || '',
 	        systemCode: sessionStorage.getItem('systemCode'),
-	        companyCode: OSS.company
+	        companyCode: OSS.company,
 	         //updaterId: sessionStorage.getItem('userId'),
 	    };
     }

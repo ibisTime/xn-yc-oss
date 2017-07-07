@@ -22,6 +22,12 @@ $(function() {
         field: 'bookMobile',
         title: '联系电话',
     }, {
+        field: 'rate1',
+        title: '返点人民币比例',
+    }, {
+        field: 'rate2',
+        title: '返点橙券比例',
+    }, {
         field: 'status',
         title: '状态',
         type: 'select',
@@ -38,12 +44,6 @@ $(function() {
             0: "否",
         },
         required: true,
-    }, {
-        field: 'rate1',
-        title: '返点人民币比例',
-    }, {
-        field: 'rate2',
-        title: '返点橙券比例',
     }, {
         field: 'updateDatetime',
         title: '入驻时间',

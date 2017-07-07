@@ -103,7 +103,7 @@ $(function() {
         }
         var code = selRecords[0].code;
         qrcode.clear();
-        qrcode.makeCode(OSS.domain + '/user/rechargeCard.html?code=' + code);
+        qrcode.makeCode(OSS.domain + '/user/rechargeCard.htm?code=' + code);
         setTimeout(function() {
             savePic(code);
         }, 1);

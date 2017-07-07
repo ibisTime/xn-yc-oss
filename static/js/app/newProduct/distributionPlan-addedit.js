@@ -15,14 +15,14 @@ $(function() {
         title: '大类',
         type: 'hidden',
         required: true,
-        value: 'FL2017062716471159133341'
+        value: 'FL20170627100000001'
     }, {
         field: 'type',
         title: '小类',
         type: 'select',
         listCode: '808007',
         params: {
-            parentCode: 'FL2017062716471159133341',
+            parentCode: 'FL20170627100000001',
         },
         keyName: 'code',
         valueName: 'name',
@@ -35,18 +35,18 @@ $(function() {
         required: true,
         view: view
     }, {
-        title: "销售状态",
-        field: "saleStatus",
-        maxlengthh: 255,
-        required: true,
-        view: view
-    }, {
         field: 'name',
         title: '计划名称',
         required: true,
         maxlength: 20,
         view: view
-    }, {
+    },{
+        title: "销售状态",
+        field: "saleStatus",
+        maxlengthh: 255,
+        required: true,
+        view: view
+    },  {
         field: 'slogan',
         title: '广告语',
         required: true,
@@ -335,6 +335,7 @@ $(function() {
         });
 
         $('#popForm #name').val(selRecords[0].name)
+        // $('#popForm #originalPrice').val(moneyFormat(selRecords[0].originalPrice))
         $('#popForm #price2').val(moneyFormat(selRecords[0].price2))
         $('#popForm #price1').val(moneyFormat(selRecords[0].price1))
         $('#popForm #province').val(selRecords[0].province)
