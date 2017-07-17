@@ -7,11 +7,16 @@ $(function() {
             field: 'code',
             title: '订单编号',
         }, {
-            title: "配送计划名称",
+            title: "商品名称",
             field: "productName"
         }, {
-            title: "配送计划规格",
-            field: "productSpecsName"
+            field: 'status',
+            title: '订单状态',
+            type: "select",
+            key: "order_status",
+            keyCode: '808907',
+            formatter: Dict.getNameForList("order_status", "808907"),
+            search: true,
         }, {
             field: 'payAmount1',
             title: '支付总额',
@@ -22,51 +27,33 @@ $(function() {
                     return "橙券：" + moneyFormat(data.payAmount2)
                 }
             }
+        },{
+            title: '收件人',
+            field: 'receiver',
+            // formatter: function(v, data) {
+            //     return data.user.mobile;
+            // }
         }, {
-            field: 'logisticsDate',
-            title: '配送时间'
-        }, {
-            field: 'prompt',
-            title: '配送次数',
-            formatter: function(v, data) {
-                return data.logisticsRemain + "/" + data.logisticsSum
-            }
-        },
-        {
-            field: 'applyUser',
-            title: '下单用户',
-            formatter: function(v, data) {
-                return data.user.mobile;
-            }
-
-        }, {
-            field: 'status',
-            title: '订单状态',
-            type: "select",
-            key: "order_status",
-            keyCode: '808907',
-            formatter: Dict.getNameForList("order_status", "808907"),
-            search: true,
-        }, {
-            title: "是否归档",
-            field: "isFiled",
-            type: "select",
-            data: {
-                "1": "已归档",
-                "0": "未归档"
-            }
+            field: 'reAddress',
+            title: '收件地址'
         },{
             field: 'applyDatetime',
-            title: '下单时间',
+            title: '下次配送时间',
             type: "datetime",
             field1: 'dateStart',
-            title1: '下单时间起',
+            title1: '下次配送时间起',
             type1: "date",
             field2: 'dateEnd',
-            title2: '下单时间止',
+            title2: '下次配送时间止',
             type2: "date",
             search: true,
             formatter: dateTimeFormat
+        }, {
+            field: 'prompt',
+            title: '已配送',
+            formatter: function(v, data) {
+                return data.logisticsRemain + "/" + data.logisticsSum
+            }
         }, {
             field: 'remark',
             title: '备注',
