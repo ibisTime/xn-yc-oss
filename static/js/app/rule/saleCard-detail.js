@@ -1,57 +1,44 @@
 $(function() {
     var code = getQueryString('code');
     var view = getQueryString('v');
-
+    var userType = {
+        "05": "运营商",
+        "taster": "试吃员",
+    };
     var fields = [{
-        title: '数量',
-        field: 'fromAmount',
-        formatter: moneyFormat,
-         readonly:view,
-    }, {
-        field: "toAmount",
-        title: "价格",
-        formatter: moneyFormat,
-         readonly:view,
-    }, {
-            field: 'toUserId',
-            title: '运营商',
-            readonly:view,
-            type: 'select',
-            pageCode: "805054",
-            params: {
-                kind: '05',
-                updater: ''
-            },
-            keyName: 'userId',
-            valueName: 'mobile',
-            searchName: 'mobile'
-        },
-        {
-            field: 'receiver',
-            title: '收款人',
-            type: 'select',
-             readonly:view,
-            pageCode: "805054",
-            params: {
-                kind: "01",
-                updater: ''
-            },
-            keyName: 'loginName',
-            valueName: 'loginName',
-            searchName: 'loginName',
+            field: 'code',
+            title: '编号',
+            formatter:function(v,data){
+                $("#code[name='code']").html(data.code)
+            }            
         },{
-            title: '状态',
-            field: "status",
+            field: 'role',
+            title: '被授信用户角色',
+            required: true,
             type: 'select',
+            pageCode: "805054",
             data: {
-                "1": "已发放",
-                // "0": "待支付"
+                "05": "运营商",
+                "taster": "试吃员"
             },
-        // search: true
-        // key: "card_status",
-        // formatter: Dict.getNameForList("card_status"),
-        // search:true
-    },  {
+            formatter:function(v,data){
+                return userType[data.toUser.kind]
+            }
+        },{
+            field: 'realName',
+            title: '被授信人',
+            type: 'select',
+            required: true,
+            formatter:function(v,data){
+                return data.toUser.realName +'-'+data.toUser.mobile
+            }            
+        },{
+            title: '授信数量',
+            field: 'fromAmount',
+            "Z+": true,
+            required: true,
+            amount: true
+        },{
             title: "是否归档",
             field: "isFiled",
             type: "select",
@@ -59,7 +46,7 @@ $(function() {
                 "1": "已归档",
                 "0": "未归档"
             }
-         }, {
+        },{
             title: '创建时间',
             field: 'createDatetime',
             readonly:view,
@@ -67,9 +54,9 @@ $(function() {
         },{
             field: 'remark',
             title: '用途说明',
-             readonly:view,
+            required: true,
             maxlength: 255
-        },
+        }
         
     ];
 

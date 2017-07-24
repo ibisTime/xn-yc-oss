@@ -2,6 +2,7 @@ $(function() {
 
     var code = getQueryString('code');
     var view = getQueryString('v');
+    var view1 = getQueryString('v1');
 
     var fields = [{
             field: 'kind',
@@ -22,8 +23,8 @@ $(function() {
             field: 'price1',
             title: '商品价格',
             formatter: function(v, data) {
-                if (data.price2 != 0 && v !=0) {
-                    return "人民币：" + moneyFormat(data.price1)+";橙券：" + moneyFormat(data.price2)
+                if (data.price2 !== 0 && v !== "") {
+                    return "人民币：" + moneyFormat(data.price1)+"; 橙券：" + moneyFormat(data.price2)
                 } 
             },
             readonly: view,
@@ -35,8 +36,8 @@ $(function() {
             field: 'amount1',
             title: '订单总额',
             formatter: function(v, data) {
-                if (v != 0 && data.amount2 !=0) {
-                    return "人民币：" + moneyFormat(data.amount1)+";橙券：" + moneyFormat(data.amount2)
+                if (v !== "" && data.amount2 !== 0) {
+                    return "人民币：" + moneyFormat(data.amount1)+"; 橙券：" + moneyFormat(data.amount2)
                 } 
             },
             readonly: view,
@@ -67,6 +68,16 @@ $(function() {
             formatter: function(v, data) {
                 return data.user.mobile
             }
+        }, {
+            field: 'type',
+            title: '订单类型',
+            type: "select",
+            data: {
+                    "1": "普通",
+                    "4": "试吃"
+                },
+            readonly: view,
+            search: true,
         },{
             field: 'status',
             title: '订单状态',
@@ -80,7 +91,8 @@ $(function() {
             data: {
                 "1": "已归档",
                 "0": "未归档"
-            }
+            },
+            readonly: view,
         },{
             field: 'applyNote',
             title: '下单说明',
@@ -117,15 +129,18 @@ $(function() {
         },{
             field: 'deliverer',
             title: '发货人',
+            readonly: view,
 
         }, {
             field: 'deliveryDatetime',
             title: '发货时间',
             formatter: dateTimeFormat,
+            readonly: view,
         }, {
             field: 'pdf',
             title: '物流单',
             type: 'img',
+            readonly: view,
         }, {
             field: 'remark',
             title: '备注',

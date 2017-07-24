@@ -1,4 +1,25 @@
 $(function() {
+var userType = {
+        "05": "运营商",
+        "taster": "试吃员",
+    };
+
+reqApi({
+        code: "805054",
+        json: {
+            kind:"05taster",
+            start:1,
+            limit:10,
+            updater:""
+        }
+    }).done(function(d) {
+        var data2={};
+        d.list.forEach(function(v,i){
+            data2[v.userId] = v.realName +'-'+userType[v.kind];
+
+        })
+        $("#toUserId").renderDropdown2(data2);
+    })      
 
     var columns = [{
         field: '',
@@ -12,76 +33,59 @@ $(function() {
         field: 'fromAmount',
         "Z+": true,
         formatter: moneyFormat
-    }, {
-        field: "toAmount",
-        title: "价格",
-        formatter: moneyFormat
-    },  {
-        field: 'toUserId',
-        title: '运营商',
-        type: 'select',
-        pageCode1: "805054",
-        params: {
-            kind: '05',
-            updater: '',
-        },
-        keyName: 'userId',
-        valueName: 'mobile',
-        searchName: 'mobile',
-        search: true,
-        visible: false
-    }, {
-        field: 'loginName',
-        title: '运营商',
-        type: 'select',
-        formatter: function(v, data) {
-            if (data.toUser.kind == "01") {
-                return data.toUser.loginName
-            } else {
-                return data.toUser.mobile
-            }
-        }
-
-    }, {
-        field: 'receiver',
-        title: '收款人',
-        type: 'select',
-        required: true,
-        pageCode1: "805054",
-        params: {
-            kind: "01",
-            updater: '',
-            // status:""
-        },
-        keyName: 'loginName',
-        valueName: 'loginName',
-        searchName: 'loginName',
-        search: true
-    },{
+    }
+    // , {
+    //     field: "toAmount",
+    //     title: "价格",
+    //     formatter: moneyFormat
+    // }
+    ,{
         title: '状态',
         field: "status",
         type: 'select',
         data: {
-            "1": "已发放",
-            // "0": "待支付"
+            "1": "已授信",
+            "0": "未授信"
         },
-        // search: true
-        // key: "card_status",
-        // formatter: Dict.getNameForList("card_status"),
-        // search:true
+        search: true,
+    },  {
+            title: "归档状态",
+            field: "isFiled",
+            type: "select",
+            data: {
+                "1": "已归档",
+                "0": "未归档"
+            }
+         },  {
+        field: 'kind',
+        title: '角色',
+        formatter: function(v, data) {
+             
+             return userType[data.toUser.kind]
+        }        
     },{
-        title: "是否归档",
-        field: "isFiled",
-        type: "select",
-        data: {
-            "1": "已归档",
-            "0": "未归档"
+        field: 'realName',
+        title: '姓名',
+        formatter: function(v, data) {
+             return data.toUser.realName
+        },   
+    },{
+        field: 'toUserId',
+        title: '姓名',
+        type:"select",
+        // pageCode1:"805054",
+        // params:{
+        //     kind:"05taster",
+        //     updater:""
+        // },
+        // keyName:"userId",
+        // valueName:"realName",
+        search:true,
+        visible:false,
+        afterSet: function(v, data){
+                      
         }
     }, {
-            title: '创建时间',
-            field: 'createDatetime',
-            formatter: dateTimeFormat
-        }, {
         field: 'remark',
         title: '用途说明',
         maxlength: 255,
@@ -89,7 +93,6 @@ $(function() {
         normalArea: true
     }];
     buildList({
-
         columns: columns,
         pageCode: "802415",
         searchParams: {

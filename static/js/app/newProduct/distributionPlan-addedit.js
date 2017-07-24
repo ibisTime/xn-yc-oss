@@ -87,6 +87,11 @@ $(function() {
         title: '备注',
         view: view,
         maxlength: 255
+    }, {
+        field: 'isTaste',
+        title: '是否试吃',
+        type: "hidden",
+        value: "0"
     }];
 
     buildDetail({
@@ -145,7 +150,14 @@ $(function() {
             title: '序号',
             required: true,
             number: true
-        }],
+        }
+        // , {
+        //     field: 'isTaste',
+        //     title: '是否试吃',
+        //     type: "hidden",
+        //     value: "0"
+        // }
+        ],
         singleSelect: true, //禁止多选
         clickToSelect: true, //自动选中
         uniqueId: 'id',
@@ -208,6 +220,11 @@ $(function() {
                 field: 'orderNo',
                 title: '序号',
                 required: true,
+                }, {
+                field: 'isTaste',
+                title: '是否试吃',
+                type: "hidden",
+                value: "0"
             }],
             container: $('#formContainer'),
             buttons: [{

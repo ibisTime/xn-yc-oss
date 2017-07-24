@@ -11,11 +11,14 @@ $(function() {
 	},{
 		title: '位置',
 		field: 'location',
-        formatter: function(v){
-			if(v == "index_banner"){
-				return '发现';
-			}		   
-		},  
+		key: "banner_location",
+        formatter: Dict.getNameForList("banner_location", "807706"),
+        search: true,		
+  //       formatter: function(v){
+		// 	if(v == "index_banner"){
+		// 		return '发现';
+		// 	}		   
+		// },  
         
 	}, {
 		title: '顺序',

@@ -25,13 +25,21 @@ $(function() {
                 return "橙券：" + moneyFormat(data.payAmount2)
             }
         }
-    }, {
-        field: 'applyUser',
-        title: '下单用户',
-        formatter: function(v, data) {
-            return data.user.mobile;
-        }
-
+    },{
+            title: '收件人',
+            field: 'receiver'
+        }, {
+            field: 'reAddress',
+            title: '收件地址'
+        }, {
+        field: 'type',
+        title: '订单类型',
+        type: "select",
+        data: {
+                "1": "普通",
+                "4": "试吃"
+            },
+        search: true,
     }, {
         field: 'status',
         title: '订单状态',
@@ -40,15 +48,17 @@ $(function() {
         keyCode: '808907',
         formatter: Dict.getNameForList("order_status", "808907"),
         search: true,
-    }, {
-            title: "是否归档",
-            field: "isFiled",
-            type: "select",
-            data: {
-                "1": "已归档",
-                "0": "未归档"
-            }
-        },{
+    }
+    // , {
+    //         title: "是否归档",
+    //         field: "isFiled",
+    //         type: "select",
+    //         data: {
+    //             "1": "已归档",
+    //             "0": "未归档"
+    //         }
+    //     }
+        ,{
         field: 'applyDatetime',
         title: '下单时间',
         type: "datetime",
@@ -71,7 +81,8 @@ $(function() {
         searchParams: {
             toUser: OSS.SYS_USER,
             companyCode: OSS.company,
-            type: "1"
+            type: "1,4",
+            isFiled: "0"
         }
     });
 //归档
@@ -211,30 +222,40 @@ $(function() {
 
 
     });
-    //确认收货
-    // $('#confirmOrderBtn').click(function() {
-    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-    //     if (selRecords.length <= 0) {
-    //         toastr.info("请选择记录");
-    //         return;
-    //     }
+    // 确认收货
+    $('#confirmOrderBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
 
-    //     if (selRecords[0].status != 3) {
-    //         toastr.info("当前订单状态不能确认收货!");
-    //         return;
-    //     }
+        if (selRecords[0].status != 3) {
+            toastr.info("当前订单状态不能确认收货!");
+            return;
+        }
 
-    //     confirm("确认收货？").then(function() {
-    //         reqApi({
-    //             code: '808057',
-    //             json: { "code": selRecords[0].code }
-    //         }).then(function() {
-    //             toastr.info("操作成功");
-    //             $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-    //         });
-    //     }, function() {});
+        confirm("确认收货？").then(function() {
+            reqApi({
+                code: '808057',
+                json: { "code": selRecords[0].code }
+            }).then(function() {
+                toastr.info("操作成功");
+                $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+            });
+        }, function() {});
 
-    // });
+    });
 
+    $('#addRemarkBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+
+         window.location.href = "order_addRemark.html?Code=" + selRecords[0].code+'&v=1&v1=0';
+
+    });    
 
 });

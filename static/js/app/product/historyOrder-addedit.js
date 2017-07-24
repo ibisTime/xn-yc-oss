@@ -7,10 +7,9 @@ $(function() {
             field: 'kind',
             type: 'hidden',
             value: '1'
-        },
-        {
+        },{
             field: 'name',
-            title: '果树名称',
+            title: '商品名称',
             formatter: function(v, data) {
                 return data.productName
             },
@@ -28,11 +27,11 @@ $(function() {
                 } 
             },
             readonly: view,
-        },  {
+        }, {
             title: "购买数量",
             field: "quantity",
             readonly: view,
-        },{
+        }, {
             field: 'amount1',
             title: '订单总额',
             formatter: function(v, data) {
@@ -52,14 +51,23 @@ $(function() {
                 }
             },
             readonly: view,
-        },{
+        },
+        //  {
+        //     field: 'price222',
+        //     title: '发货地',
+        //     formatter: function(v, data) {
+        //         return data.productSpecs.province;
+        //     },
+        //     readonly: view,
+        // },
+         {
             field: 'applyUser',
             title: '下单用户',
             readonly: view,
             formatter: function(v, data) {
                 return data.user.mobile
             }
-        }, {
+        },{
             field: 'status',
             title: '订单状态',
             key: "order_status",
@@ -72,8 +80,7 @@ $(function() {
             data: {
                 "1": "已归档",
                 "0": "未归档"
-             },
-             readonly: view,
+            }
         },{
             field: 'applyNote',
             title: '下单说明',
@@ -85,6 +92,41 @@ $(function() {
             readonly: view,
         },
         {
+            field: 'receiver',
+            title: '收货人姓名',
+            readonly: view,
+        }, {
+            field: 'reMobile',
+            title: '收件人电话',
+            readonly: view,
+        }, {
+            field: 'reAddress',
+            title: '收货地址',
+            readonly: view,
+        },{
+            field: 'logisticsCompany',
+            title: '物流公司',
+            key: "kd_company",
+            formatter: Dict.getNameForList("kd_company", "808907"),
+            keyCode: "808907",
+            readonly: view,
+        }, {
+            field: 'logisticsCode',
+            title: '物流编号',
+            readonly: view,
+        },{
+            field: 'deliverer',
+            title: '发货人',
+
+        }, {
+            field: 'deliveryDatetime',
+            title: '发货时间',
+            formatter: dateTimeFormat,
+        }, {
+            field: 'pdf',
+            title: '物流单',
+            type: 'img',
+        }, {
             field: 'remark',
             title: '备注',
             readonly: view,

@@ -7,6 +7,11 @@ $(function() {
     var paramIndex = 0;
     var categoryDict = {};
     var categoryDict1 = {};
+    var data1 = {
+                "1" : "是",
+                "0" : "否"
+            };
+     
     reqApi({
         code: "808007",
         json: {
@@ -80,6 +85,16 @@ $(function() {
         maxlength: 20,
         view: view
     }, {
+        field: 'isTaste',
+        title: '是否试吃',
+        type: 'select',
+        required: true,
+        data:{
+            "1" : "是",
+            "0" : "否"
+        },
+        view: view
+    }, {
         title: "销售状态",
         field: "saleStatus",
         maxlengthh: 255,
@@ -145,6 +160,14 @@ $(function() {
             title: '规格名称',
             required: true,
         }, {
+            field: 'isTaste',
+            title: '是否试吃',
+            type: 'select',
+            required: true,
+            formatter:function(v,data){
+                 return data1[data.isTaste]
+            }
+        }, {
             field: 'originalPrice',
             title: '原价',
             amount: true,
@@ -206,10 +229,10 @@ $(function() {
     $("#addBtn").click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
 
-        if (selRecords.length > 0) {
-            toastr.warning("只能添加一条规格参数");
-            return;
-        }
+        // if (selRecords.length > 0) {
+        //     toastr.warning("只能添加一条规格参数");
+        //     return;
+        // }
         var dw = dialog({
             content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
                 '<ul class="form-info" id="formContainer"></ul>' +
@@ -222,6 +245,15 @@ $(function() {
                 field: 'name',
                 title: '规格名称',
                 required: true,
+            }, {
+                field: 'isTaste1',
+                title: '是否试吃',
+                type: 'select',
+                data:{
+                    "1" : "是",
+                    "0" : "否"
+                },
+                required: true
             }, {
                 field: 'originalPrice',
                 title: '原价',
@@ -268,6 +300,7 @@ $(function() {
                     if ($('#popForm').valid()) {
                         var data = $('#popForm').serializeObject();
                         data.code = codeInd++;
+                        data.isTaste = data.isTaste1;
                         $('#tableList').bootstrapTable('insertRow', {
                             index: data.code,
                             row: data
@@ -327,6 +360,15 @@ $(function() {
                 title: '规格名称',
                 required: true,
             }, {
+                field: 'isTaste1',
+                title: '是否试吃',
+                type: 'select',
+                data:{
+                    "1" : "是",
+                    "0" : "否"
+                },
+                required: true
+            }, {
                 field: 'originalPrice',
                 title: '原价',
                 amount: true,
@@ -373,6 +415,7 @@ $(function() {
                     if ($('#popForm').valid()) {
                         var data = $('#popForm').serializeObject();
                         data.code = selRecords[0].code;
+                        data.isTaste = data.isTaste1;
                         $('#tableList').bootstrapTable('updateRow', {
                             index: paramIndex,
                             row: data
@@ -392,6 +435,7 @@ $(function() {
         });
         //originalPrice
         $('#popForm #name').val(selRecords[0].name);
+        $('#popForm #isTaste1').val(selRecords[0].isTaste);
         $('#popForm #originalPrice').val(moneyFormat(selRecords[0].originalPrice));
         $('#popForm #price2').val(moneyFormat(selRecords[0].price2));
         $('#popForm #price1').val(moneyFormat(selRecords[0].price1));

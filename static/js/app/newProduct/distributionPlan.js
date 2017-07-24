@@ -53,7 +53,7 @@ $(function() {
             key: "product_status",
             keyCode: "808907",
             formatter: Dict.getNameForList("product_status", "808907"),
-            // search: true
+            search: true
         }, {
             field: 'location',
             title: '位置',
@@ -61,7 +61,6 @@ $(function() {
             key: "product_location",
             keyCode: '808907',
             formatter: Dict.getNameForList("product_location", "808907"),
-            search: true,
         }, {
             field: 'orderNo',
             title: '次序',
@@ -151,6 +150,6 @@ $(function() {
 
     //     window.location.href = "../product/productParam.html?Code=" + selRecords[0].code + "&pName=" + selRecords[0].name;
     // });
-
+    $('#deleteBtn').hide();
 
 });

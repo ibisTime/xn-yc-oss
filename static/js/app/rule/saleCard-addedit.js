@@ -1,53 +1,66 @@
 $(function() {
 
+    var fields = [ {
+            field: 'role',
+            title: '被授信用户角色',
+            required: true,
+            type: 'select',
+            pageCode: "805054",
+            data: {
+                "05": "运营商",
+                "taster": "试吃员"
+            },
+            onChange:function(data){  
+                reqApi({
+                    code: '805054',
+                    json: {
+                        kind:data,
+                        start:"1",
+                        limit:"10",
+                        updater: ''                    
+                    },
+                    sync: true
+                }).done(function(d) {
+                    var data1 = {};
 
-    var fields = [{
-            title: '数量',
+                    if(d.list.length ){
+                        d.list.forEach(function(d,i){
+                            data1[d.userId] = d.realName +'-'+ d.mobile ;
+
+                        })
+                    }
+                    $("#toUserId").renderDropdown2(data1);
+
+                });                               
+            }
+        },{
+            field: 'toUserId',
+            title: '被授信人',
+            type: 'select',
+            required: true,
+            // listCode: "805054",
+            // params: {
+            //     kind: kind,
+            //     start:"1",
+            //     limit:"10",
+            //     updater: ''
+            // },
+            // keyName: 'userId',
+            // valueName: 'mobile',
+            // searchName: 'loginName',
+        },
+        {
+            title: '授信数量',
             field: 'amount',
             "Z+": true,
             required: true,
             amount: true
-        },
-        {
-            field: "tranAmount",
-            title: "价格",
-            // formatter: moneyFormat,
-            amount: true,
-            required: true
-        }, {
-            field: 'toUserId',
-            title: '运营商',
-            required: true,
-            type: 'select',
-            pageCode: "805054",
-            params: {
-                kind: '05',
-                updater: ''
-            },
-            keyName: 'userId',
-            valueName: 'mobile',
-            searchName: 'mobile'
-        },
-        {
-            field: 'receiver',
-            title: '收款人',
-            type: 'select',
-            required: true,
-            pageCode: "805054",
-            params: {
-                kind: "01",
-                updater: ''
-            },
-            keyName: 'loginName',
-            valueName: 'loginName',
-            searchName: 'loginName',
         }, {
             field: 'remark',
             title: '用途说明',
             required: true,
             maxlength: 255
-        },
-        {
+        },{
             title: '',
             field: 'fromUserId',
             type: "hidden",

@@ -21,7 +21,7 @@ $(function() {
             field: 'payAmount1',
             title: '支付总额',
             formatter: function(v, data) {
-                if (v != 0) {
+                if (v !== 0) {
                     return "人民币：" + moneyFormat(data.payAmount1)
                 } else {
                     return "橙券：" + moneyFormat(data.payAmount2)
@@ -38,15 +38,14 @@ $(function() {
             title: '收件地址'
         },{
             field: 'applyDatetime',
-            title: '下次配送时间',
+            title: '下单时间',
             type: "datetime",
             field1: 'dateStart',
-            title1: '下次配送时间起',
+            title1: '下单时间起',
             type1: "date",
             field2: 'dateEnd',
-            title2: '下次配送时间止',
+            title2: '下单时间止',
             type2: "date",
-            search: true,
             formatter: dateTimeFormat
         }, {
             field: 'prompt',
@@ -66,7 +65,8 @@ $(function() {
         searchParams: {
             toUser: OSS.SYS_USER,
             companyCode: OSS.company,
-            type: "3"
+            type: "3",
+            isFiled: "0",
         }
     });
 
@@ -83,15 +83,16 @@ $(function() {
             return;
         }
 
-        confirm("确认配送1次？").then(function() {
-            reqApi({
-                code: '808059',
-                json: { "code": selRecords[0].code }
-            }).then(function() {
-                toastr.info("操作成功");
-                $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-            });
-        })
+        window.location.href = "distributionOrder_once.html?Code=" + selRecords[0].code +"&v=1";
+        // confirm("确认配送1次？").then(function() {
+        //     reqApi({
+        //         code: '808059',
+        //         json: { "code": selRecords[0].code }
+        //     }).then(function() {
+        //         toastr.info("操作成功");
+        //         $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+        //     });
+        // })
     });
 
 
@@ -107,48 +108,50 @@ $(function() {
             toastr.info("当前订单状态不能取消订单!");
             return;
         }
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        var dw = dialog({
-            content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                '<ul class="form-info" id="formContainer"></ul>' +
-                '</form>'
-        });
 
-        dw.showModal();
-        buildDetail({
-            fields: [{
-                field: 'remark',
-                title: '取消原因',
-            }],
-            container: $('#formContainer'),
-            buttons: [{
-                title: '关闭',
-                handler: function() {
-                    dw.close().remove();
-                }
-            }, {
-                title: '取消订单',
-                handler: function() {
+        window.location.href = "distributionOrder_cancel.html?Code=" + selRecords[0].code +"&v=1";
+        // var selRecords = $('#tableList').bootstrapTable('getSelections');
+        // var dw = dialog({
+        //     content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+        //         '<ul class="form-info" id="formContainer"></ul>' +
+        //         '</form>'
+        // });
 
-                    if ($('#popForm').valid()) {
+        // dw.showModal();
+        // buildDetail({
+        //     fields: [{
+        //         field: 'remark',
+        //         title: '取消原因',
+        //     }],
+        //     container: $('#formContainer'),
+        //     buttons: [{
+        //         title: '关闭',
+        //         handler: function() {
+        //             dw.close().remove();
+        //         }
+        //     }, {
+        //         title: '取消订单',
+        //         handler: function() {
 
-                        var data = $('#popForm').serializeObject();
-                        data.codeList = [selRecords[0].code];
-                        reqApi({
-                            code: '808056',
-                            json: data
-                        }).done(function(data) {
-                            toastr.success("操作成功");
-                            setTimeout(function() {
-                                location.reload();
-                                dw.close().remove();
-                            }, 2000)
-                        });
-                    }
-                }
-            }]
-        });
-        dw.__center();
+        //             if ($('#popForm').valid()) {
+
+        //                 var data = $('#popForm').serializeObject();
+        //                 data.codeList = [selRecords[0].code];
+        //                 reqApi({
+        //                     code: '808056',
+        //                     json: data
+        //                 }).done(function(data) {
+        //                     toastr.success("操作成功");
+        //                     setTimeout(function() {
+        //                         location.reload();
+        //                         dw.close().remove();
+        //                     }, 2000)
+        //                 });
+        //             }
+        //         }
+        //     }]
+        // });
+        // dw.__center();
 
 
     });
@@ -187,19 +190,31 @@ $(function() {
             toastr.info("该记录已归档");
             return;
         }
-        confirm("确认归档？").then(function() {
-            reqApi({
-                code: '808058',
-                json: {
-                    "code": selRecords[0].code,
-                    "updater": sessionStorage.getItem('userName')
-                }
-            }).then(function() {
-                toastr.info("操作成功");
-                $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-            });
-        });
+
+         window.location.href = "distributionOrder_filed.html?Code=" + selRecords[0].code +"&v=1";
+        // confirm("确认归档？").then(function() {
+        //     reqApi({
+        //         code: '808058',
+        //         json: {
+        //             "code": selRecords[0].code,
+        //             "updater": sessionStorage.getItem('userName')
+        //         }
+        //     }).then(function() {
+        //         toastr.info("操作成功");
+        //         $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+        //     });
+        // });
 
     });
+    $('#addRemarkBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+
+        window.location.href = "distributionOrder_addRemark.html?Code=" + selRecords[0].code +"&v=1";
+
+    });    
 
 });

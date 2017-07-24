@@ -47,12 +47,14 @@ $(function() {
         title: '位置',
         field: 'location',
         type: "select",
-        data: {
-            "index_banner": "发现"
-        },
-        value: "index_banner",
         required: true,
-        readonly: view
+        readonly: view,
+        listCode: "807706",
+        params:{
+            parentKey:"banner_location"
+        },
+        keyName: 'dkey',
+        valueName: 'dvalue',      
     }, {
         title: '顺序',
         field: 'orderNo',
